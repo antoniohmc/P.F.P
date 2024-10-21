@@ -1,4 +1,4 @@
-# Matchmaking Manual para Jogadores
+# P.F.P
 
 Um sistema de matchmaking manual e gratuito, onde jogadores podem facilmente formar equipes sem compromisso. Este projeto foi desenvolvido utilizando Java (Spring Boot, Spring JPA, Hibernate), Angular e MySQL.
 
