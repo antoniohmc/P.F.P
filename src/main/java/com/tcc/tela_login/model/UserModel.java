@@ -9,8 +9,8 @@ import java.util.UUID;
 @Entity
 @Builder
 @Data
-public class User {
+public class UserModel {
     private UUID id;
-    private String userName;
+    private String username;
     private String password;
 }
