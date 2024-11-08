@@ -1,7 +1,6 @@
 package com.tcc.tela_login.model;
 
 import jakarta.persistence.Entity;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +10,12 @@ import lombok.Data;
 @Data
 public class UsersList {
 
-    private List<UserModel> users = new ArrayList<>();
+    private List<UserModel> users;
 
-    public List<UserModel> addUser(String username, String password, List<Game> favoriteGames) {
+    /**
+     * Metodo com a funcionalidade de cadastrar um novo usuario no banco de dados do sistema.
+     */
+    public List<UserModel> register(String username, String password, List<Game> favoriteGames) {
         UserModel newUSer = UserModel.builder()
             .username(username)
             .password(password)
