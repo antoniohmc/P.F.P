@@ -13,6 +13,7 @@ import java.util.UUID;
 public class UserModel {
     private UUID id;
     private String username;
+    private String email;
     private String password;
     private List<Game> favoriteGames;
 }
