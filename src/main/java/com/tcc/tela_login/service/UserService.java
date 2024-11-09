@@ -18,17 +18,18 @@ public class UserService {
     private UserRepository userRepository;
     private UsersList users;
 
-    public void checkRegister(String email, String username, String password, List<Game> favoriteGames) throws EmailExistenteExeption {
+    public boolean checkRegister(String email, String username, String password, List<Game> favoriteGames) throws EmailExistenteExeption {
         for (UserModel user : users.getUsers()) {
             if (user.getEmail().equals(email))
                 throw new EmailExistenteExeption("Email ja cadastrado, insira um novo email");
         }
-        users.register(username, password, favoriteGames);
+        users.register(email,username, password, favoriteGames);
+        return false;
     }
 
 
-    public boolean authenticate(String username, String password) {
-        Optional<UserModel> userOptional = userRepository.findByUserName(username);
+    public boolean authenticate(String email, String password) {
+        Optional<UserModel> userOptional = userRepository.findByEmail(email);
         return userOptional.isPresent() && userOptional.get().getPassword().equals(password);
     }
 

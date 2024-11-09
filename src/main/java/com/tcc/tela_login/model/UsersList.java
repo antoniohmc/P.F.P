@@ -15,8 +15,9 @@ public class UsersList {
     /**
      * Metodo com a funcionalidade de cadastrar um novo usuario no banco de dados do sistema.
      */
-    public List<UserModel> register(String username, String password, List<Game> favoriteGames) {
+    public List<UserModel> register(String email,String username, String password, List<Game> favoriteGames) {
         UserModel newUSer = UserModel.builder()
+            .email(email)
             .username(username)
             .password(password)
             .favoriteGames(favoriteGames)
