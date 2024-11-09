@@ -5,6 +5,7 @@ import com.tcc.tela_login.model.Game;
 import com.tcc.tela_login.model.UserModel;
 import com.tcc.tela_login.model.UsersList;
 import com.tcc.tela_login.service.UserService;
+import java.util.Collection;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ public class UserController {
         @RequestParam String password,
         @RequestParam List<Game> favoriteGames) {
         try {
-            List<UserModel> updatedUsers = users.register(email, username, password, favoriteGames);
+            Collection<UserModel> updatedUsers = users.register(email, username, password, favoriteGames);
             return updatedUsers.toString();
         } catch (EmailExistenteExeption e) {
             return e.getMessage();
