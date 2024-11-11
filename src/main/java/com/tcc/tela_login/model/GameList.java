@@ -9,15 +9,18 @@ import static com.tcc.tela_login.model.Genders.STRATEGY;
 import static com.tcc.tela_login.model.Genders.TERROR;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+@Table(name = "GamerList")
 @Entity
 public class GameList {
 
-    private Collection<Game> games = new ArrayList<>();
+    private final Collection<Game> games = new ArrayList<>();
 
     public Collection<Game> popularGames () {
         games.add(new Game(UUID.randomUUID(), "LEAGUE OF LEGENDS", List.of(MOBA, COMPETITIVE)));

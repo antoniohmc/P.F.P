@@ -25,7 +25,7 @@ public class UserController {
     public String register(@RequestParam String username,
         @RequestParam String email,
         @RequestParam String password,
-        @RequestParam List<Game> favoriteGames) {
+        @RequestParam Collection<Game> favoriteGames) {
         try {
             Collection<UserModel> updatedUsers = users.register(email, username, password, favoriteGames);
             return updatedUsers.toString();
