@@ -7,5 +7,6 @@ public enum Genders {
     RPG,
     COMPETITIVE,
     MOBA,
-    STRATEGY
+    STRATEGY,
+    FIGHT
 }

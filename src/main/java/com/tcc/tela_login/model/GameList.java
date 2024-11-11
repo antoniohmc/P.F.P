@@ -3,6 +3,7 @@ package com.tcc.tela_login.model;
 import static com.tcc.tela_login.model.Genders.ACTION;
 import static com.tcc.tela_login.model.Genders.ADVENTURE;
 import static com.tcc.tela_login.model.Genders.COMPETITIVE;
+import static com.tcc.tela_login.model.Genders.FIGHT;
 import static com.tcc.tela_login.model.Genders.MOBA;
 import static com.tcc.tela_login.model.Genders.RPG;
 import static com.tcc.tela_login.model.Genders.STRATEGY;
@@ -47,15 +48,16 @@ public class GameList {
         games.add(new Game(UUID.randomUUID(), "BLACK DESERT ONLINE", List.of(RPG, ACTION, ADVENTURE)));
         games.add(new Game(UUID.randomUUID(), "MONSTER HUNTER WORLD", List.of(ACTION, RPG, ADVENTURE)));
         games.add(new Game(UUID.randomUUID(), "THE DIVISION 2", List.of(ACTION, ADVENTURE, COMPETITIVE)));
-        games.add(new Game(UUID.randomUUID(), "MORTAL KOMBAT 11", List.of(ACTION, COMPETITIVE)));
+        games.add(new Game(UUID.randomUUID(), "MORTAL KOMBAT 11", List.of(ACTION, COMPETITIVE, FIGHT)));
         games.add(new Game(UUID.randomUUID(), "TOM CLANCY'S GHOST RECON", List.of(ACTION, ADVENTURE, COMPETITIVE)));
         games.add(new Game(UUID.randomUUID(), "HALO INFINITE", List.of(ACTION, COMPETITIVE)));
-        games.add(new Game(UUID.randomUUID(), "FOR HONOR", List.of(ACTION, COMPETITIVE)));
+        games.add(new Game(UUID.randomUUID(), "FOR HONOR", List.of(ACTION, COMPETITIVE, FIGHT)));
         games.add(new Game(UUID.randomUUID(), "SEA OF THIEVES", List.of(ADVENTURE, ACTION, COMPETITIVE)));
         games.add(new Game(UUID.randomUUID(), "BRAWLHALLA", List.of(ACTION, COMPETITIVE)));
         games.add(new Game(UUID.randomUUID(), "HUNT: SHOWDOWN", List.of(ACTION, TERROR, COMPETITIVE)));
         games.add(new Game(UUID.randomUUID(), "ARCHEAGE", List.of(RPG, ACTION, ADVENTURE)));
         games.add(new Game(UUID.randomUUID(), "PALADINS", List.of(ACTION, COMPETITIVE)));
+        games.add(new Game(UUID.randomUUID(), "DRAGON BALL SPARKING ZERO", List.of(ACTION,FIGHT)));
 
         return games;
     }
