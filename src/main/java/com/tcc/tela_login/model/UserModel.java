@@ -7,13 +7,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Collection;
-import java.util.List;
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.UUID;
-
-@Table (name = "User")
+@Table(name = "User")
 @Entity
 @Builder
 @Data

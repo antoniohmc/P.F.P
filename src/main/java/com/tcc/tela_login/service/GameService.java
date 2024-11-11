@@ -6,7 +6,6 @@ import com.tcc.tela_login.model.UserModel;
 import com.tcc.tela_login.model.UsersList;
 import com.tcc.tela_login.repository.GameRepository;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,8 @@ public class GameService {
         Optional<Game> favoriteGame = gameRepository.findByName(gameName);
 
         return favoriteGame.map(game -> users.getUsers().stream()
-            .filter(user -> user.getFavoriteGames().contains(game))
-            .collect(Collectors.toList())).orElseThrow(() -> new GameNotFoundException("Nenhum player jogando: " + gameName + " no momento"));
+                .filter(user -> user.getFavoriteGames().contains(game))
+                .collect(Collectors.toList()))
+            .orElseThrow(() -> new GameNotFoundException("Nenhum player jogando: " + gameName + " no momento"));
     }
 }

@@ -6,10 +6,9 @@ import com.tcc.tela_login.model.UserModel;
 import com.tcc.tela_login.model.UsersList;
 import com.tcc.tela_login.repository.UserRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -18,15 +17,15 @@ public class UserService {
     private UserRepository userRepository;
     private UsersList users;
 
-    public boolean checkRegister(String email, String username, String password, List<Game> favoriteGames) throws ExistingEmailException {
+    public boolean checkRegister(String email, String username, String password, List<Game> favoriteGames)
+        throws ExistingEmailException {
         for (UserModel user : users.getUsers()) {
             if (user.getEmail().equals(email))
                 throw new ExistingEmailException("Email ja cadastrado, insira um novo email");
         }
-        users.register(email,username, password, favoriteGames);
+        users.register(email, username, password, favoriteGames);
         return false;
     }
-
 
     public boolean authenticate(String email, String password) {
         Optional<UserModel> userOptional = userRepository.findByEmail(email);

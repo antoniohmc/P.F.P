@@ -10,7 +10,6 @@ import static com.tcc.tela_login.model.Genders.STRATEGY;
 import static com.tcc.tela_login.model.Genders.TERROR;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +22,7 @@ public class GameList {
 
     private final Collection<Game> games = new ArrayList<>();
 
-    public Collection<Game> popularGames () {
+    public Collection<Game> popularGames() {
         games.add(new Game(UUID.randomUUID(), "LEAGUE OF LEGENDS", List.of(MOBA, COMPETITIVE)));
         games.add(new Game(UUID.randomUUID(), "FORTNITE", List.of(ACTION, COMPETITIVE)));
         games.add(new Game(UUID.randomUUID(), "DOTA 2", List.of(MOBA, COMPETITIVE)));
@@ -57,7 +56,7 @@ public class GameList {
         games.add(new Game(UUID.randomUUID(), "HUNT: SHOWDOWN", List.of(ACTION, TERROR, COMPETITIVE)));
         games.add(new Game(UUID.randomUUID(), "ARCHEAGE", List.of(RPG, ACTION, ADVENTURE)));
         games.add(new Game(UUID.randomUUID(), "PALADINS", List.of(ACTION, COMPETITIVE)));
-        games.add(new Game(UUID.randomUUID(), "DRAGON BALL SPARKING ZERO", List.of(ACTION,FIGHT)));
+        games.add(new Game(UUID.randomUUID(), "DRAGON BALL SPARKING ZERO", List.of(ACTION, FIGHT)));
 
         return games;
     }
