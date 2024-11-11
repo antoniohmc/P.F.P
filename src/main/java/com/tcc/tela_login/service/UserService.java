@@ -1,6 +1,6 @@
 package com.tcc.tela_login.service;
 
-import com.tcc.tela_login.exeptions.EmailExistenteExeption;
+import com.tcc.tela_login.exeptions.ExistingEmailException;
 import com.tcc.tela_login.model.Game;
 import com.tcc.tela_login.model.UserModel;
 import com.tcc.tela_login.model.UsersList;
@@ -18,10 +18,10 @@ public class UserService {
     private UserRepository userRepository;
     private UsersList users;
 
-    public boolean checkRegister(String email, String username, String password, List<Game> favoriteGames) throws EmailExistenteExeption {
+    public boolean checkRegister(String email, String username, String password, List<Game> favoriteGames) throws ExistingEmailException {
         for (UserModel user : users.getUsers()) {
             if (user.getEmail().equals(email))
-                throw new EmailExistenteExeption("Email ja cadastrado, insira um novo email");
+                throw new ExistingEmailException("Email ja cadastrado, insira um novo email");
         }
         users.register(email,username, password, favoriteGames);
         return false;

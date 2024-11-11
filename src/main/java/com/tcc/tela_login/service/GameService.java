@@ -1,5 +1,6 @@
 package com.tcc.tela_login.service;
 
+import com.tcc.tela_login.exeptions.GameNotFoundException;
 import com.tcc.tela_login.model.Game;
 import com.tcc.tela_login.model.UserModel;
 import com.tcc.tela_login.model.UsersList;
@@ -19,11 +20,11 @@ public class GameService {
 
     private UsersList users;
 
-    public Collection<UserModel> findPlayersByFavoriteGameName(String gameName) {
+    public Collection<UserModel> findPlayersByFavoriteGameName(String gameName) throws GameNotFoundException {
         Optional<Game> favoriteGame = gameRepository.findByName(gameName);
 
         return favoriteGame.map(game -> users.getUsers().stream()
             .filter(user -> user.getFavoriteGames().contains(game))
-            .collect(Collectors.toList())).orElse(Collections.emptyList());
+            .collect(Collectors.toList())).orElseThrow(() -> new GameNotFoundException("Nenhum player jogando: " + gameName + " no momento"));
     }
 }

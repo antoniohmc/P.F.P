@@ -1,12 +1,11 @@
 package com.tcc.tela_login.controller;
 
-import com.tcc.tela_login.exeptions.EmailExistenteExeption;
+import com.tcc.tela_login.exeptions.ExistingEmailException;
 import com.tcc.tela_login.model.Game;
 import com.tcc.tela_login.model.UserModel;
 import com.tcc.tela_login.model.UsersList;
 import com.tcc.tela_login.service.UserService;
 import java.util.Collection;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +28,7 @@ public class UserController {
         try {
             Collection<UserModel> updatedUsers = users.register(email, username, password, favoriteGames);
             return updatedUsers.toString();
-        } catch (EmailExistenteExeption e) {
+        } catch (ExistingEmailException e) {
             return e.getMessage();
         }
     }
