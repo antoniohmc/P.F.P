@@ -1,6 +1,6 @@
 # P.F.P
 
-Um sistema de matchmaking manual e gratuito, onde jogadores podem facilmente formar equipes sem compromisso. Este projeto foi desenvolvido utilizando Java (Spring Boot, Spring JPA, Hibernate), Angular e MySQL.
+Um sistema de matchmaking manual e gratuito, onde jogadores podem facilmente formar equipes sem compromisso. Este projeto esta sendo desenvolvido com a utilização de Java (Spring Boot, Spring JPA, Hibernate), Angular e MySQL.
 
 ## Descrição
 
