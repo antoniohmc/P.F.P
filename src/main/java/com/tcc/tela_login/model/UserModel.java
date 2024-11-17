@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Collection;
 import java.util.UUID;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,6 +17,7 @@ import lombok.Data;
 @Entity
 @Builder
 @Data
+@AllArgsConstructor
 public class UserModel {
 
     @Id
@@ -24,4 +27,11 @@ public class UserModel {
     private String email;
     private String password;
     private Collection<Game> favoriteGames;
+
+    public UserModel(String username, String email, String password, Collection<Game> favoriteGames) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.favoriteGames = favoriteGames;
+    }
 }
