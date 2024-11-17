@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GameRepository extends JpaRepository<Game, UUID> {
 
-    Optional<Game> findByName(String nome);
+    Optional<Game> findByName(String name);
 }
