@@ -1,6 +1,7 @@
 package com.tcc.tela_login.model;
 
-public enum Genders {
+public enum GendersType {
+
     TERROR,
     ACTION,
     ADVENTURE,

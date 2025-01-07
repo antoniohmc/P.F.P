@@ -1,13 +1,13 @@
-package com.tcc.tela_login.model;
+package com.tcc.tela_login.model.game;
 
-import static com.tcc.tela_login.model.Genders.ACTION;
-import static com.tcc.tela_login.model.Genders.ADVENTURE;
-import static com.tcc.tela_login.model.Genders.COMPETITIVE;
-import static com.tcc.tela_login.model.Genders.FIGHT;
-import static com.tcc.tela_login.model.Genders.MOBA;
-import static com.tcc.tela_login.model.Genders.RPG;
-import static com.tcc.tela_login.model.Genders.STRATEGY;
-import static com.tcc.tela_login.model.Genders.TERROR;
+import static com.tcc.tela_login.model.GendersType.ACTION;
+import static com.tcc.tela_login.model.GendersType.ADVENTURE;
+import static com.tcc.tela_login.model.GendersType.COMPETITIVE;
+import static com.tcc.tela_login.model.GendersType.FIGHT;
+import static com.tcc.tela_login.model.GendersType.MOBA;
+import static com.tcc.tela_login.model.GendersType.RPG;
+import static com.tcc.tela_login.model.GendersType.STRATEGY;
+import static com.tcc.tela_login.model.GendersType.TERROR;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

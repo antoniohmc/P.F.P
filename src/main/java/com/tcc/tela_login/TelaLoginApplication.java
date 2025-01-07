@@ -1,4 +1,4 @@
-package com.tcc.tela_login.view;
+package com.tcc.tela_login;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

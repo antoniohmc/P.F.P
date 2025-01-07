@@ -1,7 +1,8 @@
-package com.tcc.tela_login.model;
+package com.tcc.tela_login.model.game;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+import com.tcc.tela_login.model.GendersType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -18,6 +19,8 @@ public class Game {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private UUID id;
+
     private String name;
-    private Collection<Genders> gender;
+
+    private Collection<GendersType> genders;
 }

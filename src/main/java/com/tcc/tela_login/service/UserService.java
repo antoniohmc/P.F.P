@@ -1,33 +1,31 @@
 package com.tcc.tela_login.service;
 
 import com.tcc.tela_login.exeptions.ExistingEmailException;
-import com.tcc.tela_login.model.Game;
-import com.tcc.tela_login.model.UserModel;
+import com.tcc.tela_login.model.user.User;
 import com.tcc.tela_login.repository.UserRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public void registerUser(String email, String username, String password, List<Game> favoriteGames) throws ExistingEmailException {
-        if (userRepository.findByEmail(email).isPresent()) {
+    public User registerUser(User usuario) throws ExistingEmailException {
+        if (userRepository.findByEmail(usuario.getEmail()).isPresent()) {
             throw new ExistingEmailException("Email já cadastrado, insira um novo email");
         }
 
-        UserModel user = new UserModel(email, username, password, favoriteGames);
+        User user = new User();
         userRepository.save(user);
+        return user;
     }
 
     public boolean authenticate(String email, String password) {
-        Optional<UserModel> userOptional = userRepository.findByEmail(email);
+        Optional<User> userOptional = userRepository.findByEmail(email);
 
         return userOptional.isPresent() && userOptional.get().getPassword().equals(password);
     }
