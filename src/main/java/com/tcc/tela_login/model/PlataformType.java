@@ -5,5 +5,5 @@ public enum PlataformType {
     PC,
     PS5,
     PS4,
-    XBOX_ONE
+    XBOX
 }

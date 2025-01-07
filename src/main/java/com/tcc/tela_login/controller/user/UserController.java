@@ -31,7 +31,3 @@ public class UserController {
         return authenticated ? "Login bem-sucedido!" : "Credenciais inválidas.";
     }
 }
-
-
-//User user = userService.registerUser(usuario);
-// return new ResponseEntity<>(user, HttpStatus.CREATED);

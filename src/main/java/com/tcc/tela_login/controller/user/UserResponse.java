@@ -4,28 +4,28 @@ import com.tcc.tela_login.model.PlataformType;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.user.DayTimePreference;
 import com.tcc.tela_login.model.user.Location;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-
 import java.util.Collection;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 @Builder
 @AllArgsConstructor
 public class UserResponse {
-     private UUID id;
 
-     private String username;
+    private UUID id;
 
-     private String email;
+    private String username;
 
-     private String password;
+    private String email;
 
-     private Location location;
+    private String password;
 
-     private PlataformType plataformType;
+    private Location location;
 
-     private Collection<DayTimePreference> gamingTimePreferences;
+    private PlataformType plataformType;
 
-     private Collection<Game> favoriteGames;
+    private Collection<DayTimePreference> gamingTimePreferences;
+
+    private Collection<Game> favoriteGames;
 }

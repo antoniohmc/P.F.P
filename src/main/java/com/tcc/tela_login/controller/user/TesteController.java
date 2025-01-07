@@ -19,5 +19,3 @@ public class TesteController {
 }
 
 
-//User user = userService.registerUser(usuario);
-// return new ResponseEntity<>(user, HttpStatus.CREATED);

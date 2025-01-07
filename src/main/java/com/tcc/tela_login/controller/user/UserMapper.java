@@ -9,7 +9,7 @@ import java.util.Collection;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
-public class UserMapper {
+public class  UserMapper {
 
     static UserResponse mapToResponse(User user) {
 

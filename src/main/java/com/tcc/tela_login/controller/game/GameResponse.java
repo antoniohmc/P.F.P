@@ -10,6 +10,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 public class GameResponse {
+
      UUID id;
 
      String username;
