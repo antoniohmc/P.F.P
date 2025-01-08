@@ -5,20 +5,19 @@ import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.user.User;
 import com.tcc.tela_login.repository.GameRepository;
 import com.tcc.tela_login.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class GameService {
 
-    @Autowired
-    private GameRepository gameRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final GameRepository gameRepository;
+
+    private final UserRepository userRepository;
 
 
     public Collection<User> findPlayersByGame(String name) throws GameNotFoundException {
