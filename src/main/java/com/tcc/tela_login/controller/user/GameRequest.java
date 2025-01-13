@@ -1,6 +1,6 @@
 package com.tcc.tela_login.controller.user;
 
-import com.tcc.tela_login.model.GendersType;
+import com.tcc.tela_login.model.game.GendersType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;

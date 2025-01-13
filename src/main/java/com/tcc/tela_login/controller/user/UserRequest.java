@@ -1,7 +1,7 @@
 package com.tcc.tela_login.controller.user;
 
 
-import com.tcc.tela_login.model.PlataformType;
+import com.tcc.tela_login.model.game.PlataformType;
 import com.tcc.tela_login.model.user.DayTimePreference;
 import com.tcc.tela_login.model.user.Location;
 import lombok.AllArgsConstructor;
