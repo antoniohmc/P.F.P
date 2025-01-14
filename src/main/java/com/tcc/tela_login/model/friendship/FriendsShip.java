@@ -15,7 +15,7 @@ import java.util.UUID;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-@Table(name = "FriendsShip")
+@Table(name = "user_friendships")
 @Entity
 @Data
 @Builder

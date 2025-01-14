@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FriendShipsRepository extends JpaRepository <User, UUID> {
 
-    Optional<User> findByUsername(UUID uuid);
+    Optional<User> findByUsername(String username);
 }
