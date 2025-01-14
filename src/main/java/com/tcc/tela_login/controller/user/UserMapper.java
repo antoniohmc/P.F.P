@@ -1,10 +1,12 @@
 package com.tcc.tela_login.controller.user;
 
 import com.tcc.tela_login.model.game.Game;
+import com.tcc.tela_login.model.game.GendersType;
 import com.tcc.tela_login.model.user.User;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -42,7 +44,7 @@ public class  UserMapper {
         return gameRequest.stream()
                 .map(request -> Game.builder()
                         .name(request.getName())
-                        .genders(request.getGenders())
+                        .genders((List<GendersType>) request.getGenders())
                         .build())
                 .toList();
     }

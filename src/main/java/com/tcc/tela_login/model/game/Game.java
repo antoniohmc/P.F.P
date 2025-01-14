@@ -9,10 +9,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@Table(name = "Game")
 @Entity
-@Builder
+@Table(name = "Game")
 @Data
+@Builder
 public class Game {
 
     @Id
@@ -26,7 +26,6 @@ public class Game {
     @CollectionTable(name = "game_genders", joinColumns = @JoinColumn(name = "game_id"))
     @Enumerated(EnumType.STRING)
     private List<GendersType> genders;
-
 
     @ManyToMany
     @JoinTable(

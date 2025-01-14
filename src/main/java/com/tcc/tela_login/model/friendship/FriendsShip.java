@@ -4,12 +4,13 @@ import com.tcc.tela_login.model.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Collection;
 import java.util.UUID;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -25,6 +26,12 @@ public class FriendsShip {
     @GeneratedValue(strategy = IDENTITY)
     private UUID id;
 
-    private Collection<User> friends;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "friend_id")
+    private User friend;
 
 }
