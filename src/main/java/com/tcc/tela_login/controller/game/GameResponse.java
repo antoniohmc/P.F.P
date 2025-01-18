@@ -13,7 +13,7 @@ public class GameResponse {
 
      UUID id;
 
-     String username;
+     String name;
 
      Collection<GendersType> gender;
 }

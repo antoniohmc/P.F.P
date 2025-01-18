@@ -1,7 +1,7 @@
 package com.tcc.tela_login.controller.user;
 
-import com.tcc.tela_login.model.user.User;
-import com.tcc.tela_login.service.UserService;
+import com.tcc.tela_login.model.user.Player;
+import com.tcc.tela_login.service.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/conta")
 @RequiredArgsConstructor
-public class UserController {
+public class PlayerController {
 
-    private final UserService userService;
+    private final PlayerService playerService;
 
     @PostMapping("/cadastrar")
-    public UserResponse register(@RequestBody UserRequest request) {
+    public PlayerResponse register(@RequestBody PlayerRequest request) {
 
-        User user = UserMapper.mapToUser(request);
-        User salvo = userService.registerUser(user);
+        Player player = PlayerMapper.mapToUser(request);
+        Player salvo = playerService.registerUser(player);
 
-        return UserMapper.mapToResponse(salvo);
+        return PlayerMapper.mapToResponse(salvo);
     }
 
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password) {
-        boolean authenticated = userService.authenticate(email, password);
+        boolean authenticated = playerService.authenticate(email, password);
         return authenticated ? "Login bem-sucedido!" : "Credenciais inválidas.";
     }
 }

@@ -1,9 +1,9 @@
 package com.tcc.tela_login.service;
 
 import com.tcc.tela_login.exeptions.NotFoundUser;
-import com.tcc.tela_login.model.user.User;
+import com.tcc.tela_login.model.user.Player;
 import com.tcc.tela_login.repository.FriendShipsRepository;
-import com.tcc.tela_login.repository.UserRepository;
+import com.tcc.tela_login.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +13,14 @@ public class FriendShipService {
 
     private final FriendShipsRepository friendShipsRepository;
 
-    private final UserRepository userRepository;
+    private final PlayerRepository playerRepository;
 
-    public User addUser(User user) throws NotFoundUser {
-        if (userRepository.findByUsername(user.getUsername()).isEmpty()) {
+    public Player addUser(Player player) throws NotFoundUser {
+        if (playerRepository.findByUsername(player.getUsername()).isEmpty()) {
             throw new NotFoundUser("Nenhum usuario encontrado!");
         }
 
-        return friendShipsRepository.save(user);
+        return friendShipsRepository.save(player);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.tcc.tela_login.model.friendship;
 
-import com.tcc.tela_login.model.user.User;
+import com.tcc.tela_login.model.user.Player;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -13,9 +13,10 @@ import lombok.Data;
 
 import java.util.UUID;
 
+import static jakarta.persistence.GenerationType.AUTO;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-@Table(name = "user_friendships")
+@Table(name = "player_friendships")
 @Entity
 @Data
 @Builder
@@ -23,15 +24,15 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 public class FriendsShip {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = AUTO)
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "player_id")
+    private Player player;
 
     @ManyToOne
     @JoinColumn(name = "friend_id")
-    private User friend;
+    private Player friend;
 
 }

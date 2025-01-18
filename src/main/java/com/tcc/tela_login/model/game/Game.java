@@ -1,6 +1,6 @@
 package com.tcc.tela_login.model.game;
 
-import com.tcc.tela_login.model.user.User;
+import com.tcc.tela_login.model.user.Player;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -21,14 +21,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+import static jakarta.persistence.GenerationType.AUTO;
+
 @Entity
-@Table(name = "Game")
+@Table(name = "game")
 @Data
 @Builder
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = AUTO)
     private UUID id;
 
     @Column(name = "name", nullable = false, length = 100)
@@ -41,9 +43,9 @@ public class Game {
 
     @ManyToMany
     @JoinTable(
-            name = "game_users",
+            name = "game_players",
             joinColumns = @JoinColumn(name = "game_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            inverseJoinColumns = @JoinColumn(name = "player_id")
     )
-    private Collection<User> users;
+    private Collection<Player> players;
 }

@@ -9,20 +9,22 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.UUID;
 
+import static jakarta.persistence.GenerationType.AUTO;
+
 @Entity
-@Table(name = "DayTimePreference")
+@Table(name = "day_time_preference")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class DayTimePreference {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = AUTO)
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "player_id")
+    private Player player;
 
     @Enumerated(EnumType.STRING)
     private DayOfWeek day;

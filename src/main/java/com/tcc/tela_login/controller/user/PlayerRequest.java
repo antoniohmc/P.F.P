@@ -13,7 +13,7 @@ import java.util.Collection;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
+public class PlayerRequest {
 
     String username;
 

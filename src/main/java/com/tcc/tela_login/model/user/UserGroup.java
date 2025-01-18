@@ -1,5 +1,6 @@
 package com.tcc.tela_login.model.user;
 
+import static jakarta.persistence.GenerationType.AUTO;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 import jakarta.persistence.*;
@@ -12,7 +13,7 @@ import lombok.Builder;
 import lombok.Data;
 
 
-@Table(name = "User_Group")
+@Table(name = "user_group")
 @Entity
 @Builder
 @Data
@@ -20,7 +21,7 @@ import lombok.Data;
 public class UserGroup {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = AUTO)
     private UUID id;
 
     @Column(name = "capacity", nullable = false, length = 4)
@@ -28,11 +29,11 @@ public class UserGroup {
 
     @ManyToMany
     @JoinTable(
-            name = "user_group_user",
-            joinColumns = @JoinColumn(name = "user_group_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            name = "player_group",
+            joinColumns = @JoinColumn(name = "player_group_id"),
+            inverseJoinColumns = @JoinColumn(name = "player_id")
     )
-    private Collection<User> users;
+    private Collection<Player> players;
 
     @Column(name = "status", nullable = false)
     private Boolean open;

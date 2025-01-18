@@ -1,7 +1,7 @@
 package com.tcc.tela_login.repository;
 
 import com.tcc.tela_login.model.game.Game;
-import com.tcc.tela_login.model.user.User;
+import com.tcc.tela_login.model.user.Player;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
+public interface PlayerRepository extends JpaRepository<Player, UUID> {
 
-    Optional<User> findByUsername(String username);
+    Optional<Player> findByUsername(String username);
 
-    Optional<User> findByEmail(String email);
+    Optional<Player> findByEmail(String email);
 
-    Collection<User> findByFavoriteGamesContains(Game game);
+    Collection<Player> findByFavoriteGamesContains(Game game);
 }

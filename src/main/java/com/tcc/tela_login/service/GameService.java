@@ -2,9 +2,9 @@ package com.tcc.tela_login.service;
 
 import com.tcc.tela_login.exeptions.GameNotFoundException;
 import com.tcc.tela_login.model.game.Game;
-import com.tcc.tela_login.model.user.User;
+import com.tcc.tela_login.model.user.Player;
 import com.tcc.tela_login.repository.GameRepository;
-import com.tcc.tela_login.repository.UserRepository;
+import com.tcc.tela_login.repository.PlayerRepository;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +17,10 @@ public class GameService {
 
     private final GameRepository gameRepository;
 
-    private final UserRepository userRepository;
+    private final PlayerRepository playerRepository;
 
 
-    public Collection<User> findPlayersByGame(String name) throws GameNotFoundException {
+    public Collection<Player> findPlayersByGame(String name) throws GameNotFoundException {
 
         Optional<Game> optionalGame = gameRepository.findByName(name);
         if (optionalGame.isEmpty()) {
@@ -28,6 +28,6 @@ public class GameService {
         }
 
         Game targetGame = optionalGame.get();
-        return userRepository.findByFavoriteGamesContains(targetGame);
+        return playerRepository.findByFavoriteGamesContains(targetGame);
     }
 }

@@ -1,13 +1,13 @@
 package com.tcc.tela_login.repository;
 
-import com.tcc.tela_login.model.user.User;
+import com.tcc.tela_login.model.user.Player;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FriendShipsRepository extends JpaRepository <User, UUID> {
+public interface FriendShipsRepository extends JpaRepository <Player, UUID> {
 
-    Optional<User> findByUsername(String username);
+    Optional<Player> findByUsername(String username);
 }

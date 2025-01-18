@@ -23,16 +23,18 @@ import lombok.NoArgsConstructor;
 import java.util.Collection;
 import java.util.UUID;
 
+import static jakarta.persistence.GenerationType.AUTO;
+
 @Entity
-@Table(name = "User")
+@Table(name = "player")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = AUTO)
     private UUID id;
 
     @Column(name = "name", nullable = false, length = 20)
@@ -52,13 +54,13 @@ public class User {
     @Column(name = "plataform_type")
     private PlataformType plataformType;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "player")
     private Collection<DayTimePreference> gamingTimePreferences;
 
     @ManyToMany
     @JoinTable(
-            name = "user_games",
-            joinColumns = @JoinColumn(name = "user_id"),
+            name = "player_games",
+            joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "game_id")
     )
     private Collection<Game> favoriteGames;

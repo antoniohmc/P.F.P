@@ -11,7 +11,7 @@ import lombok.Builder;
 
 @Builder
 @AllArgsConstructor
-public class UserResponse {
+public class PlayerResponse {
 
     private UUID id;
 

@@ -2,7 +2,7 @@ package com.tcc.tela_login.controller.user;
 
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.GendersType;
-import com.tcc.tela_login.model.user.User;
+import com.tcc.tela_login.model.user.Player;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
@@ -11,24 +11,24 @@ import java.util.List;
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
-public class  UserMapper {
+public class PlayerMapper {
 
-    static UserResponse mapToResponse(User user) {
+    static PlayerResponse mapToResponse(Player player) {
 
-        return UserResponse.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .password(user.getPassword())
-                .location(user.getLocation())
-                .gamingTimePreferences(user.getGamingTimePreferences())
-                .favoriteGames(user.getFavoriteGames())
+        return PlayerResponse.builder()
+                .id(player.getId())
+                .username(player.getUsername())
+                .email(player.getEmail())
+                .password(player.getPassword())
+                .location(player.getLocation())
+                .gamingTimePreferences(player.getGamingTimePreferences())
+                .favoriteGames(player.getFavoriteGames())
                 .build();
     }
 
-    static User mapToUser(UserRequest user) {
+    static Player mapToUser(PlayerRequest user) {
 
-        return User.builder()
+        return Player.builder()
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .password(user.getPassword())

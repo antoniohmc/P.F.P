@@ -7,15 +7,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+import static jakarta.persistence.GenerationType.AUTO;
+
 @Entity
-@Table(name = "Location")
+@Table(name = "location")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Location {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = AUTO)
     private UUID id;
 
     @Enumerated(EnumType.STRING)
