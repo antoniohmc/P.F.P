@@ -1,4 +1,4 @@
-package com.tcc.tela_login.model.user;
+package com.tcc.tela_login.model.player;
 
 public enum Country {
     BRASIL,

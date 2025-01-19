@@ -1,6 +1,6 @@
 package com.tcc.tela_login.model.game;
 
-import com.tcc.tela_login.model.user.Player;
+import com.tcc.tela_login.model.player.Player;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -8,14 +8,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +28,8 @@ import static jakarta.persistence.GenerationType.AUTO;
 @Table(name = "game")
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Game {
 
     @Id

@@ -1,8 +1,10 @@
-package com.tcc.tela_login.controller.user;
+package com.tcc.tela_login.controller.player;
 
+import com.tcc.tela_login.controller.game.GameMapper;
+import com.tcc.tela_login.controller.game.GameRequest;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.GendersType;
-import com.tcc.tela_login.model.user.Player;
+import com.tcc.tela_login.model.player.Player;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
@@ -13,6 +15,8 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor(access = PRIVATE)
 public class PlayerMapper {
 
+    private GameMapper gameMapper;
+
     static PlayerResponse mapToResponse(Player player) {
 
         return PlayerResponse.builder()
@@ -21,25 +25,26 @@ public class PlayerMapper {
                 .email(player.getEmail())
                 .password(player.getPassword())
                 .location(player.getLocation())
+                .plataformType(player.getPlataformType())
                 .gamingTimePreferences(player.getGamingTimePreferences())
                 .favoriteGames(player.getFavoriteGames())
                 .build();
     }
 
-    static Player mapToUser(PlayerRequest user) {
+    static Player mapToRequest(PlayerRequest player) {
 
         return Player.builder()
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .password(user.getPassword())
-                .location(user.getLocation())
-                .plataformType(user.getPlataformType())
-                .gamingTimePreferences(user.getGamingTimePreferences())
-                .favoriteGames(mapToGame(user.getFavoriteGames()))
+                .username(player.getUsername())
+                .email(player.getEmail())
+                .password(player.getPassword())
+                .location(player.getLocation())
+                .plataformType(player.getPlataformType())
+                .gamingTimePreferences(player.getGamingTimePreferences())
+                .favoriteGames(mapToGame(player.getFavoriteGames()))
                 .build();
     }
 
-    private static Collection<Game> mapToGame(Collection<GameRequest> gameRequest) {
+     static Collection<Game> mapToGame(Collection<GameRequest> gameRequest) {
 
         return gameRequest.stream()
                 .map(request -> Game.builder()
@@ -48,4 +53,6 @@ public class PlayerMapper {
                         .build())
                 .toList();
     }
+
+
 }

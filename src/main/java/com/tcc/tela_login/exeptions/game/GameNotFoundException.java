@@ -1,4 +1,4 @@
-package com.tcc.tela_login.exeptions;
+package com.tcc.tela_login.exeptions.game;
 
 public class GameNotFoundException extends RuntimeException {
 

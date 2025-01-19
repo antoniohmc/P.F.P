@@ -1,4 +1,4 @@
-package com.tcc.tela_login.exeptions;
+package com.tcc.tela_login.exeptions.player;
 
 public class ExistingEmailException extends RuntimeException {
 

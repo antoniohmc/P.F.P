@@ -1,6 +1,6 @@
 package com.tcc.tela_login.model.friendship;
 
-import com.tcc.tela_login.model.user.Player;
+import com.tcc.tela_login.model.player.Player;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,7 +14,6 @@ import lombok.Data;
 import java.util.UUID;
 
 import static jakarta.persistence.GenerationType.AUTO;
-import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Table(name = "player_friendships")
 @Entity

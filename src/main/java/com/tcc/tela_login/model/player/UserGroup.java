@@ -1,7 +1,6 @@
-package com.tcc.tela_login.model.user;
+package com.tcc.tela_login.model.player;
 
 import static jakarta.persistence.GenerationType.AUTO;
-import static jakarta.persistence.GenerationType.IDENTITY;
 
 import jakarta.persistence.*;
 

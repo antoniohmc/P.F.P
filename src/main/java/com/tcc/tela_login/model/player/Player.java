@@ -1,4 +1,4 @@
-package com.tcc.tela_login.model.user;
+package com.tcc.tela_login.model.player;
 
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.PlataformType;
@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;

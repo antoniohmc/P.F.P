@@ -1,7 +1,7 @@
-package com.tcc.tela_login.controller.user;
+package com.tcc.tela_login.controller.player;
 
-import com.tcc.tela_login.model.user.Player;
-import com.tcc.tela_login.service.PlayerService;
+import com.tcc.tela_login.model.player.Player;
+import com.tcc.tela_login.service.player.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +19,10 @@ public class PlayerController {
     @PostMapping("/cadastrar")
     public PlayerResponse register(@RequestBody PlayerRequest request) {
 
-        Player player = PlayerMapper.mapToUser(request);
-        Player salvo = playerService.registerUser(player);
+        Player player = PlayerMapper.mapToRequest(request);
+        Player save = playerService.registerUser(player);
 
-        return PlayerMapper.mapToResponse(salvo);
+        return PlayerMapper.mapToResponse(save);
     }
 
     @PostMapping("/login")

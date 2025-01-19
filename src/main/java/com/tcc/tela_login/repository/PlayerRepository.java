@@ -1,7 +1,7 @@
 package com.tcc.tela_login.repository;
 
 import com.tcc.tela_login.model.game.Game;
-import com.tcc.tela_login.model.user.Player;
+import com.tcc.tela_login.model.player.Player;
 
 import java.util.Collection;
 import java.util.Optional;
