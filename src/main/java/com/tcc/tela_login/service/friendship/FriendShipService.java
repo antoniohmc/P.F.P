@@ -1,4 +1,4 @@
-package com.tcc.tela_login.service.player;
+package com.tcc.tela_login.service.friendship;
 
 import com.tcc.tela_login.exeptions.player.NotFoundPlayer;
 import com.tcc.tela_login.model.player.Player;
