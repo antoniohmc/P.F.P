@@ -6,6 +6,7 @@ import com.tcc.tela_login.model.player.DayTimePreference;
 import com.tcc.tela_login.model.player.Location;
 import java.util.Collection;
 import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
@@ -13,7 +14,7 @@ import lombok.Builder;
 @AllArgsConstructor
 public class PlayerResponse {
 
-    private Integer id;
+    private UUID id;
 
     private String username;
 

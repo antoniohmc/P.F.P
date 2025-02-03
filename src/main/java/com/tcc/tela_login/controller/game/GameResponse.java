@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class GameResponse {
 
-     Integer id;
+     UUID id;
 
      String name;
 

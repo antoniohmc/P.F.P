@@ -1,38 +1,26 @@
 package com.tcc.tela_login.model.friendship;
 
 import com.tcc.tela_login.model.player.Player;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
-import static jakarta.persistence.GenerationType.AUTO;
-import static jakarta.persistence.GenerationType.IDENTITY;
 
-@Table(name = "player_friendships")
-@Entity
+@Document(collection = "player_friendships")
 @Data
 @Builder
 @AllArgsConstructor
 public class FriendsShip {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+    private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "player_id")
     private Player player;
 
-    @ManyToOne
-    @JoinColumn(name = "friend_id")
     private Player friend;
 
 }

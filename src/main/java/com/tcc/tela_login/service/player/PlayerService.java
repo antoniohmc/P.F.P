@@ -1,17 +1,12 @@
 package com.tcc.tela_login.service.player;
 
-import com.tcc.tela_login.exeptions.game.GameNotFoundException;
-import com.tcc.tela_login.exeptions.player.ExistingFavoriteGame;
 import com.tcc.tela_login.exeptions.player.ExistingUserNameException;
-import com.tcc.tela_login.exeptions.player.NotFoundPlayer;
-import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.player.Player;
 import com.tcc.tela_login.repository.GameRepository;
 import com.tcc.tela_login.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Optional;
 
 @Service
