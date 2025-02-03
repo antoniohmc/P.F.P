@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static jakarta.persistence.GenerationType.AUTO;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "game")
@@ -33,8 +34,8 @@ import static jakarta.persistence.GenerationType.AUTO;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = IDENTITY)
+    private Integer id;
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;

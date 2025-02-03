@@ -12,10 +12,9 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface PlayerRepository extends JpaRepository<Player, UUID> {
+public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
     Optional<Player> findByUsername(String username);
-
 
     Collection<Player> findByFavoriteGamesContains(Game game);
 }

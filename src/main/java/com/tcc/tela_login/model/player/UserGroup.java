@@ -1,6 +1,7 @@
 package com.tcc.tela_login.model.player;
 
 import static jakarta.persistence.GenerationType.AUTO;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 import jakarta.persistence.*;
 
@@ -20,8 +21,8 @@ import lombok.Data;
 public class UserGroup {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = IDENTITY)
+    private Integer id;
 
     @Column(name = "capacity", nullable = false, length = 4)
     private Integer capacity;

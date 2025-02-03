@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FriendShipsRepository extends JpaRepository <Player, UUID> {
+public interface FriendShipsRepository extends JpaRepository <Player, Integer> {
 
     Optional<Player> findByUsername(String username);
 }

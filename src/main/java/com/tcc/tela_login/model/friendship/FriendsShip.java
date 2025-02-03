@@ -14,6 +14,7 @@ import lombok.Data;
 import java.util.UUID;
 
 import static jakarta.persistence.GenerationType.AUTO;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Table(name = "player_friendships")
 @Entity
@@ -23,8 +24,8 @@ import static jakarta.persistence.GenerationType.AUTO;
 public class FriendsShip {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = IDENTITY)
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "player_id")

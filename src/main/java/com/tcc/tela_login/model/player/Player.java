@@ -20,9 +20,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
-import java.util.UUID;
-
-import static jakarta.persistence.GenerationType.AUTO;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "player")
@@ -33,8 +31,8 @@ import static jakarta.persistence.GenerationType.AUTO;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = IDENTITY)
+    private Integer id;
 
     @Column(name = "name", nullable = false, length = 20)
     private String username;
