@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserGroup {
 
     @Id
-    private Integer id;
+    private String id;
 
     private Integer capacity;
 

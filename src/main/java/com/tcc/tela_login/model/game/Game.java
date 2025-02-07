@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Game {
 
     @Id
-    private UUID id;
+    private String id;
 
     private String name;
 

@@ -21,7 +21,7 @@ import java.util.UUID;
 public class Player {
 
     @Id
-    private UUID id;
+    private String id;
 
     private String username;
 

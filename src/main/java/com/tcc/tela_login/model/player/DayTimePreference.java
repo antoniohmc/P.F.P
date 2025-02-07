@@ -17,7 +17,7 @@ import java.util.UUID;
 public class DayTimePreference {
 
     @Id
-    private UUID id;
+    private String id;
 
     private Player player;
 

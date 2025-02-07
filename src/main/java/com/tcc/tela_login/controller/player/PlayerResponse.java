@@ -14,7 +14,7 @@ import lombok.Builder;
 @AllArgsConstructor
 public class PlayerResponse {
 
-    private UUID id;
+    private String id;
 
     private String username;
 

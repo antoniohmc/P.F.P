@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Location {
 
     @Id
-    private UUID id;
+    private String id;
 
     private Country country;
 

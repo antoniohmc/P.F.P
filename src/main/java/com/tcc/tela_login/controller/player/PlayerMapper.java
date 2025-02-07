@@ -46,7 +46,7 @@ public class PlayerMapper {
      static Collection<Game> mapToGame(Collection<GameRequest> gameRequest) {
 
         return gameRequest.stream()
-                .map(request -> Game.builder()
+                .map(request -> Game.builder()  
                         .name(request.getName())
                         .genders((List<GendersType>) request.getGenders())
                         .build())
