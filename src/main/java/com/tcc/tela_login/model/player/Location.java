@@ -22,5 +22,5 @@ public class Location {
 
     private State state;
 
-    private Collection<Player> player;
+
 }
