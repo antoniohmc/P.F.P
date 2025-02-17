@@ -23,7 +23,6 @@ public class PlayerService {
     private final PlayerRepository playerRepository;
     private final GameRepository gameRepository;
 
-
     public Player registerUser(Player player) throws ExistingUserNameException {
         checkUsernameAlreadyExisting(player);
         favoritingGames(player);
@@ -67,12 +66,13 @@ public class PlayerService {
     }
 
     public void deletePlayer (String playerId) throws PlayerIdNotFound {
-        if (!playerRepository.existsById(UUID.fromString(playerId))){
+        UUID uuid = UUID.fromString(playerId);
+
+        if (!playerRepository.existsById(uuid)){
             throw new PlayerIdNotFound("Id não encontrado");
         }
-        playerRepository.deleteById(UUID.fromString(playerId));
+        playerRepository.deleteById(uuid);
     }
-
 
     public boolean authenticate(String username, String password) {
         Optional<Player> userOptional = playerRepository.findByUsername(username);

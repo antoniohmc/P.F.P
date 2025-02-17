@@ -5,7 +5,6 @@ import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.player.DayTimePreference;
 import com.tcc.tela_login.model.player.Location;
 import java.util.Collection;
-import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

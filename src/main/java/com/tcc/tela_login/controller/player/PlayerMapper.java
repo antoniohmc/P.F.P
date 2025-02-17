@@ -1,6 +1,5 @@
 package com.tcc.tela_login.controller.player;
 
-import com.tcc.tela_login.controller.game.GameMapper;
 import com.tcc.tela_login.controller.game.GameRequest;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.GendersType;

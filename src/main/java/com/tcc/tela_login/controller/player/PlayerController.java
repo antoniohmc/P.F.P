@@ -4,12 +4,9 @@ import com.tcc.tela_login.model.player.Player;
 import com.tcc.tela_login.service.player.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/conta")
@@ -27,13 +24,13 @@ public class PlayerController {
         return PlayerMapper.mapToResponse(save);
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password) {
-        boolean authenticated = playerService.authenticate(email, password);
+    @GetMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password) {
+        boolean authenticated = playerService.authenticate(username, password);
         return authenticated ? "Login bem-sucedido!" : "Credenciais inválidas.";
     }
 
-    @DeleteMapping("/players/{id}")
+    @DeleteMapping("/players")
     public ResponseEntity<String> deletePlayer(@RequestParam String id) {
         playerService.deletePlayer(id);
         return ResponseEntity.ok("Jogador excluido com sucesso!");
