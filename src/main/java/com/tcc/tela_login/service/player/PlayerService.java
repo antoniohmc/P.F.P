@@ -1,13 +1,18 @@
 package com.tcc.tela_login.service.player;
 
 import com.tcc.tela_login.exeptions.game.ExistingGameException;
-import com.tcc.tela_login.exeptions.player.ExistingFavoriteGame;
 import com.tcc.tela_login.exeptions.player.ExistingUserNameException;
+import com.tcc.tela_login.exeptions.player.PlayerIdNotFound;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.player.Player;
 import com.tcc.tela_login.repository.GameRepository;
 import com.tcc.tela_login.repository.PlayerRepository;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.UUID;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +24,11 @@ public class PlayerService {
     private final GameRepository gameRepository;
 
 
-    public Player registerUser(Player player) throws ExistingUserNameException, ExistingFavoriteGame {
-
-        if (player.getFavoriteGames() != null) {
-            for (Game game : player.getFavoriteGames()) {
-                checkIfFavoriteGameExists(player, game);
-            }
-        }
-        playerRepository.save(player);
-        return player;
+    public Player registerUser(Player player) throws ExistingUserNameException {
+        checkUsernameAlreadyExisting(player);
+        favoritingGames(player);
+        return playerRepository.save(player);
     }
-
 
     public void checkUsernameAlreadyExisting(Player newPlayer) throws ExistingUserNameException {
         if (playerRepository.findByUsername(newPlayer.getUsername()).isPresent()) {
@@ -42,18 +41,36 @@ public class PlayerService {
             .orElseThrow(() -> new ExistingGameException("Jogo nao encontrado na base de dados do site."));
     }
 
-    public void checkIfFavoriteGameExists(Player player, Game game) throws ExistingFavoriteGame {
-
-        getGameByName(game.getName());
-
-        boolean alreadyExists = player.getFavoriteGames().stream()
-            .anyMatch(favoriteGame -> favoriteGame.getName().equals(game.getName()));
-
-        if (!alreadyExists) {
-            player.getFavoriteGames().add(game);
-        } else {
-            throw new ExistingFavoriteGame("Este jogo já está na lista de favoritos.");
+    private void favoritingGames(Player player) {
+        if (player.getFavoriteGames() == null) {
+            return;
         }
+
+        Collection<Game> uniqueFavoriteGames = getValidUniqueFavoriteGames(player);
+        player.setFavoriteGames(uniqueFavoriteGames);
+    }
+
+    private Collection<Game> getValidUniqueFavoriteGames(Player player) {
+        Collection<Game> favoriteGames = new ArrayList<>();
+
+        for (Game game : player.getFavoriteGames()) {
+            Game validGame = getGameByName(game.getName());
+            if (isNotDuplicate(favoriteGames, validGame)) {
+                favoriteGames.add(validGame);
+            }
+        }
+        return favoriteGames;
+    }
+
+    private boolean isNotDuplicate(Collection<Game> games, Game game) {
+        return games.stream().noneMatch(g -> g.getName().equals(game.getName()));
+    }
+
+    public void deletePlayer (String playerId) throws PlayerIdNotFound {
+        if (!playerRepository.existsById(UUID.fromString(playerId))){
+            throw new PlayerIdNotFound("Id não encontrado");
+        }
+        playerRepository.deleteById(UUID.fromString(playerId));
     }
 
 
