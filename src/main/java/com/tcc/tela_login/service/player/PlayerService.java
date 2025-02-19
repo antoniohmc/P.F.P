@@ -11,7 +11,7 @@ import com.tcc.tela_login.repository.PlayerRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.UUID;
+
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class PlayerService {
     private final PlayerRepository playerRepository;
     private final GameRepository gameRepository;
 
-    public Player registerUser(Player player) throws ExistingUserNameException {
+    public Player registerPlayer(Player player) throws ExistingUserNameException {
         checkUsernameAlreadyExisting(player);
         favoritingGames(player);
         return playerRepository.save(player);
@@ -66,12 +66,13 @@ public class PlayerService {
     }
 
     public void deletePlayer (String playerId) throws PlayerIdNotFound {
-        UUID uuid = UUID.fromString(playerId);
 
-        if (!playerRepository.existsById(uuid)){
+        playerRepository.findById(playerId);
+
+        if (!playerRepository.existsById(playerId)){
             throw new PlayerIdNotFound("Id não encontrado");
         }
-        playerRepository.deleteById(uuid);
+        playerRepository.deleteById(playerId);
     }
 
     public boolean authenticate(String username, String password) {

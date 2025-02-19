@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+
 
 @RestController
-@RequestMapping("/conta")
+@RequestMapping("/player")
 @RequiredArgsConstructor
 public class PlayerController {
 
@@ -19,7 +19,7 @@ public class PlayerController {
     public PlayerResponse register(@RequestBody PlayerRequest request) {
 
         Player player = PlayerMapper.mapToRequest(request);
-        Player save = playerService.registerUser(player);
+        Player save = playerService.registerPlayer(player);
 
         return PlayerMapper.mapToResponse(save);
     }
@@ -30,9 +30,9 @@ public class PlayerController {
         return authenticated ? "Login bem-sucedido!" : "Credenciais inválidas.";
     }
 
-    @DeleteMapping("/players")
-    public ResponseEntity<String> deletePlayer(@RequestParam String id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePlayer(@PathVariable String id) {
         playerService.deletePlayer(id);
-        return ResponseEntity.ok("Jogador excluido com sucesso!");
+        return ResponseEntity.ok("Jogador deletado com sucesso!");
     }
 }
