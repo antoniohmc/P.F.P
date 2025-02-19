@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 
 
 @RestController
@@ -16,7 +17,7 @@ public class PlayerController {
     private final PlayerService playerService;
 
     @PostMapping("/cadastrar")
-    public PlayerResponse register(@RequestBody PlayerRequest request) {
+    PlayerResponse register(@RequestBody PlayerRequest request) {
 
         Player player = PlayerMapper.mapToRequest(request);
         Player save = playerService.registerPlayer(player);
@@ -24,15 +25,36 @@ public class PlayerController {
         return PlayerMapper.mapToResponse(save);
     }
 
+    @GetMapping
+    Collection<PlayerResponse> buscarPlayer() {
+
+        return playerService.getPlayers()
+                .stream()
+                .map(PlayerMapper::mapToResponse)
+                .toList();
+    }
+
     @GetMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
+    String login(@RequestParam String username, @RequestParam String password) {
         boolean authenticated = playerService.authenticate(username, password);
         return authenticated ? "Login bem-sucedido!" : "Credenciais inválidas.";
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePlayer(@PathVariable String id) {
+    ResponseEntity<?> deletePlayer(@PathVariable String id) {
         playerService.deletePlayer(id);
         return ResponseEntity.ok("Jogador deletado com sucesso!");
     }
+
+    //TODO: refatorar a atualização, pois nao esta atualizando os horarios de preferencia do player.
+
+    @PutMapping(path = "/{id}")
+    PlayerResponse atualizar(@PathVariable String id, @RequestBody PlayerRequest request) {
+
+        Player player = PlayerMapper.mapToRequest(request);
+        Player atualizado = playerService.updatePlayer(id, player);
+
+        return PlayerMapper.mapToResponse(atualizado);
+    }
+
 }

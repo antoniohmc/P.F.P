@@ -2,6 +2,7 @@ package com.tcc.tela_login.service.player;
 
 import com.tcc.tela_login.exeptions.game.ExistingGameException;
 import com.tcc.tela_login.exeptions.player.ExistingUserNameException;
+import com.tcc.tela_login.exeptions.player.NotFoundPlayer;
 import com.tcc.tela_login.exeptions.player.PlayerIdNotFound;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.player.Player;
@@ -29,15 +30,15 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    public void checkUsernameAlreadyExisting(Player newPlayer) throws ExistingUserNameException {
+    private void checkUsernameAlreadyExisting(Player newPlayer) throws ExistingUserNameException {
         if (playerRepository.findByUsername(newPlayer.getUsername()).isPresent()) {
             throw new ExistingUserNameException("Nome de usuário já cadastrado, insira um novo nome.");
         }
     }
 
-    public Game getGameByName(String gameName) throws ExistingGameException {
+    private Game getGameByName(String gameName) throws ExistingGameException {
         return gameRepository.findByName(gameName)
-            .orElseThrow(() -> new ExistingGameException("Jogo nao encontrado na base de dados do site."));
+                .orElseThrow(() -> new ExistingGameException("Jogo nao encontrado na base de dados do site."));
     }
 
     private void favoritingGames(Player player) {
@@ -65,15 +66,46 @@ public class PlayerService {
         return games.stream().noneMatch(g -> g.getName().equals(game.getName()));
     }
 
-    public void deletePlayer (String playerId) throws PlayerIdNotFound {
+    public void deletePlayer(String playerId) throws PlayerIdNotFound {
 
         playerRepository.findById(playerId);
 
-        if (!playerRepository.existsById(playerId)){
+        if (!playerRepository.existsById(playerId)) {
             throw new PlayerIdNotFound("Id não encontrado");
         }
         playerRepository.deleteById(playerId);
     }
+
+    public Player findPlayerByID(String id) throws NotFoundPlayer {
+
+        return playerRepository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundPlayer("Nenhum player encontrado com esse id"));
+    }
+
+    public Collection<Player> getPlayers() {
+
+        return playerRepository.findAll();
+    }
+
+    public Player updatePlayer(String id, Player player) {
+
+        Player exist = findPlayerByID(id);
+
+        Player updated = Player.builder()
+                .id(exist.getId())
+                .username(player.getUsername())
+                .email(player.getEmail())
+                .password(player.getPassword())
+                .location(player.getLocation())
+                .plataformType(player.getPlataformType())
+                .gamingTimePreferences(player.getGamingTimePreferences())
+                .favoriteGames(player.getFavoriteGames())
+                .build();
+
+        return playerRepository.save(updated);
+    }
+
 
     public boolean authenticate(String username, String password) {
         Optional<Player> userOptional = playerRepository.findByUsername(username);
