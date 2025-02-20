@@ -26,7 +26,7 @@ public class PlayerController {
     }
 
     @GetMapping
-    Collection<PlayerResponse> buscarPlayer() {
+    Collection<PlayerResponse> buscarPlayers() {
 
         return playerService.getPlayers()
                 .stream()

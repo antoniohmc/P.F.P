@@ -36,4 +36,6 @@ public class Player {
     private Collection<DayTimePreference> gamingTimePreferences;
 
     private Collection<Game> favoriteGames;
+
+    private Collection<Player> friends;
 }
