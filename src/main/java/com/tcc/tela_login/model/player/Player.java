@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
-
+import java.util.Collections;
 
 
 @Document(collection = "player")
@@ -38,4 +38,6 @@ public class Player {
     private Collection<Game> favoriteGames;
 
     private Collection<Player> friends;
+
+    private Collection<PlayerGroup> playerGroups;
 }

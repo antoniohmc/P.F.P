@@ -30,8 +30,8 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    private void checkUsernameAlreadyExisting(Player newPlayer) throws ExistingUserNameException {
-        if (playerRepository.findByUsername(newPlayer.getUsername()).isPresent()) {
+    private void checkUsernameAlreadyExisting(Player player) throws ExistingUserNameException {
+        if (playerRepository.findByUsername(player.getUsername()).isPresent()) {
             throw new ExistingUserNameException("Nome de usuário já cadastrado, insira um novo nome.");
         }
     }
@@ -88,6 +88,8 @@ public class PlayerService {
         return playerRepository.findAll();
     }
 
+    //TODO if you have time, implement new method that prevent to add a new username to already exist.
+    //TODO if you have time, implement new method that prevent to add one game is already exist in te favorite games list.
     public Player updatePlayer(String id, Player player) {
 
         Player exist = findPlayerByID(id);

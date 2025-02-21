@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Data
 @AllArgsConstructor
-public class UserGroup {
+public class PlayerGroup {
 
     @Id
     private String id;
