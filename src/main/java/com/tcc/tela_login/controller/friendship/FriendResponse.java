@@ -1,10 +1,10 @@
 package com.tcc.tela_login.controller.friendship;
 
-import com.tcc.tela_login.controller.game.GameRequest;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.PlataformType;
 import com.tcc.tela_login.model.player.DayTimePreference;
 import com.tcc.tela_login.model.player.Location;
+import com.tcc.tela_login.model.player.Player;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,11 +20,14 @@ public class FriendResponse {
 
     private String username;
 
-    Location location;
+    private Location location;
 
-    PlataformType plataformType;
+    private PlataformType plataformType;
 
-    Collection<DayTimePreference> gamingTimePreferences;
+    private Collection<DayTimePreference> gamingTimePreferences;
 
-    Collection<Game> favoriteGames;
+    private Collection<Game> favoriteGames;
+
+    private Collection<Player> friends;
+
 }

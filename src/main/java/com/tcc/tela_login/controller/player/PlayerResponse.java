@@ -6,6 +6,7 @@ import com.tcc.tela_login.model.player.DayTimePreference;
 import com.tcc.tela_login.model.player.Location;
 import java.util.Collection;
 
+import com.tcc.tela_login.model.player.Player;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,4 +31,6 @@ public class PlayerResponse {
     private Collection<DayTimePreference> gamingTimePreferences;
 
     private Collection<Game> favoriteGames;
+
+    private Collection<Player> friends;
 }

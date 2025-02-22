@@ -25,5 +25,4 @@ public class Game {
 
     private List<GendersType> genders;
 
-    private List<Player> players;
 }

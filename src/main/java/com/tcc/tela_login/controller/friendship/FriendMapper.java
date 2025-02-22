@@ -1,12 +1,13 @@
 package com.tcc.tela_login.controller.friendship;
 
-import com.tcc.tela_login.controller.player.PlayerResponse;
-import com.tcc.tela_login.controller.player.PlayerRequest;
 import com.tcc.tela_login.model.player.Player;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class FriendMapper {
 
-     static FriendResponse mapToResponse(Player player) {
+    static FriendResponse mapToResponse(Player player) {
 
         return FriendResponse.builder()
                 .username(player.getUsername())
@@ -14,13 +15,21 @@ public class FriendMapper {
                 .plataformType(player.getPlataformType())
                 .gamingTimePreferences(player.getGamingTimePreferences())
                 .favoriteGames(player.getFavoriteGames())
+                .friends(mapFriends(player))
                 .build();
     }
 
-    static Player mapToRequest(FriendResquest player) {
 
-         return Player.builder()
-                 .username(player.getUsername())
-                 .build();
+    private static Collection<Player> mapFriends(Player player) {
+        return player.getFriends().stream()
+                .map(friend -> Player.builder()
+                        .username(friend.getUsername())
+                        .location(friend.getLocation())
+                        .plataformType(friend.getPlataformType())
+                        .gamingTimePreferences(friend.getGamingTimePreferences())
+                        .friends(Collections.emptyList())
+                        .build()
+                )
+                .toList();
     }
 }

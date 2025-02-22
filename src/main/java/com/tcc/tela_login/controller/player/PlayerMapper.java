@@ -47,7 +47,6 @@ public class PlayerMapper {
         return gameRequest.stream()
                 .map(request -> Game.builder()  
                         .name(request.getName())
-                        .genders((List<GendersType>) request.getGenders())
                         .build())
                 .toList();
     }
