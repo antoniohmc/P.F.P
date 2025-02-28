@@ -1,10 +1,14 @@
 package com.tcc.tela_login.controller.friendship;
 
+import static lombok.AccessLevel.PRIVATE;
+
 import com.tcc.tela_login.model.player.Player;
 
 import java.util.Collection;
 import java.util.Collections;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = PRIVATE)
 public class FriendMapper {
 
     static FriendResponse mapToResponse(Player player) {

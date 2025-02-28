@@ -5,6 +5,7 @@ import com.tcc.tela_login.model.game.PlataformType;
 import com.tcc.tela_login.model.player.DayTimePreference;
 import com.tcc.tela_login.model.player.Location;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Collection;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PlayerRequest {
 
     String username;

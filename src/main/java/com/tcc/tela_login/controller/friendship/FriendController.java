@@ -1,6 +1,6 @@
 package com.tcc.tela_login.controller.friendship;
 
-import com.tcc.tela_login.controller.player.PlayerResponse;
+
 import com.tcc.tela_login.model.player.Player;
 import com.tcc.tela_login.service.friendship.FriendShipService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class FriendController {
 
     //TODO I need Correct. I must get the id user and next get the friend username
     @PostMapping("/{id}")
-    ResponseEntity<FriendResponse> adicionarAmigo(
+    ResponseEntity<FriendResponse> addFriend(
             @PathVariable String id,
             @RequestParam String newFriendUsername) {
 

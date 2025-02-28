@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.UUID;
+
 
 @Document(collection = "day_time_preference")
 @Data

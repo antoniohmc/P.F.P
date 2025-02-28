@@ -30,12 +30,5 @@ public class GameService {
         return newGame;
     }
 
-    public Collection<Player> findPlayersByGame(String name) throws GameNotFoundException {
-        Optional<Game> optionalGame = gameRepository.findByName(name);
-        if (optionalGame.isEmpty()) {
-            throw new GameNotFoundException("Nenhum jogador encontrado jogando esse jogo: " + name);
-        }
-        Game targetGame = optionalGame.get();
-        return playerRepository.findByFavoriteGamesContains(targetGame);
-    }
+
 }

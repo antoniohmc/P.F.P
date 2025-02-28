@@ -26,7 +26,7 @@ public class PlayerController {
     }
 
     @GetMapping
-    Collection<PlayerResponse> buscarPlayers() {
+    Collection<PlayerResponse> getPlayers() {
 
         return playerService.getPlayers()
                 .stream()
@@ -49,7 +49,7 @@ public class PlayerController {
     //TODO: refatorar a atualização, pois nao esta atualizando os horarios de preferencia do player.
 
     @PutMapping(path = "/{id}")
-    PlayerResponse atualizar(@PathVariable String id, @RequestBody PlayerRequest request) {
+    PlayerResponse update(@PathVariable String id, @RequestBody PlayerRequest request) {
 
         Player player = PlayerMapper.mapToRequest(request);
         Player atualizado = playerService.updatePlayer(id, player);

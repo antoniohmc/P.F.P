@@ -1,6 +1,5 @@
 package com.tcc.tela_login.model.game;
 
-import com.tcc.tela_login.model.player.Player;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
