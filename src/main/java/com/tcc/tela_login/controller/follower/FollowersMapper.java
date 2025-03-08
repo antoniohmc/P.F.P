@@ -1,4 +1,4 @@
-package com.tcc.tela_login.controller.friendship;
+package com.tcc.tela_login.controller.follower;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -9,29 +9,29 @@ import java.util.Collections;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = PRIVATE)
-public class FriendMapper {
+public class FollowersMapper {
 
-    static FriendResponse mapToResponse(Player player) {
+    static FollowersResponse mapToResponse(Player player) {
 
-        return FriendResponse.builder()
+        return FollowersResponse.builder()
                 .username(player.getUsername())
                 .location(player.getLocation())
                 .plataformType(player.getPlataformType())
                 .gamingTimePreferences(player.getGamingTimePreferences())
                 .favoriteGames(player.getFavoriteGames())
-                .friends(mapFriends(player))
+                .following(mapFollowers(player))
                 .build();
     }
 
 
-    private static Collection<Player> mapFriends(Player player) {
-        return player.getFriends().stream()
+    private static Collection<Player> mapFollowers(Player player) {
+        return player.getFollowing().stream()
                 .map(friend -> Player.builder()
                         .username(friend.getUsername())
                         .location(friend.getLocation())
                         .plataformType(friend.getPlataformType())
                         .gamingTimePreferences(friend.getGamingTimePreferences())
-                        .friends(Collections.emptyList())
+                        .following(Collections.emptyList())
                         .build()
                 )
                 .toList();

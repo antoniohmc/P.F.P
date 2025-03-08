@@ -1,4 +1,4 @@
-package com.tcc.tela_login.controller.friendship;
+package com.tcc.tela_login.controller.follower;
 
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.PlataformType;
@@ -16,7 +16,7 @@ import java.util.Collection;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FriendResponse {
+public class FollowersResponse {
 
     private String username;
 
@@ -28,6 +28,7 @@ public class FriendResponse {
 
     private Collection<Game> favoriteGames;
 
-    private Collection<Player> friends;
+    private Collection<Player> following
+            ;
 
 }
