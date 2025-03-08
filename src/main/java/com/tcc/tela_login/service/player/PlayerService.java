@@ -94,6 +94,12 @@ public class PlayerService {
 
         Player exist = findPlayerByID(id);
 
+        Collection<Game> validGames = player.getFavoriteGames().stream()
+                .map(game -> getGameByName(game.getName()))
+                .toList();
+
+        checkUsernameAlreadyExisting(player);
+
         Player updated = Player.builder()
                 .id(exist.getId())
                 .username(player.getUsername())
@@ -102,7 +108,8 @@ public class PlayerService {
                 .location(player.getLocation())
                 .plataformType(player.getPlataformType())
                 .gamingTimePreferences(player.getGamingTimePreferences())
-                .favoriteGames(player.getFavoriteGames())
+                .favoriteGames(validGames)
+                .following(player.getFollowing())
                 .build();
 
         return playerRepository.save(updated);
