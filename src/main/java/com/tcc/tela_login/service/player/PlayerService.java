@@ -76,7 +76,7 @@ public class PlayerService {
         playerRepository.deleteById(playerId);
     }
 
-    public Player findPlayerByID(String id) throws NotFoundPlayer {
+    private Player findPlayerByID(String id) throws NotFoundPlayer {
 
         return playerRepository
                 .findById(id)

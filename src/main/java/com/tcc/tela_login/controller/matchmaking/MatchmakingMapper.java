@@ -2,7 +2,7 @@ package com.tcc.tela_login.controller.matchmaking;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import com.tcc.tela_login.controller.player.PlayerResponse;
+
 import com.tcc.tela_login.model.player.Player;
 import java.util.Collection;
 import java.util.stream.Collectors;
