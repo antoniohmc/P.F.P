@@ -1,36 +1,52 @@
-# P.F.P
+P.F.P - Plataforma de Formação de Partidas
 
-Um sistema de matchmaking manual e gratuito, onde jogadores podem facilmente formar equipes sem compromisso. Este projeto foi desenvolvido utilizando Java (Spring Boot, Spring JPA, Hibernate), Angular e MySQL.
+Descrição
 
-## Descrição
+O P.F.P é um sistema de matchmaking manual e gratuito, projetado para ajudar jogadores a encontrar companheiros de equipe de forma simples e descomplicada. A plataforma permite que os usuários se cadastrem, indiquem quais jogos estão jogando e busquem outros jogadores para formar equipes sem compromisso.
 
-Este aplicativo permite que jogadores se cadastrem, indiquem quais jogos estão jogando e busquem outros jogadores para formar equipes. A ideia é criar uma plataforma onde os usuários possam se conectar, trocar experiências e jogar juntos de forma simples e descomplicada.
+Tecnologias Utilizadas
 
-## Tecnologias Utilizadas
+Backend:
 
-- **Backend**: 
-  - Java
-  - Spring Boot
-  - Spring JPA
-  - Hibernate
-  - MySQL
+Java
 
-- **Frontend**: 
-  - Angular
+Spring Boot
 
-## Funcionalidades
+Spring JPA
 
-- **Cadastro de Usuários**: 
-  - Permite que usuários se registrem informando detalhes como nome, nick de jogo, jogos que jogam e status atual.
+Hibernate
 
-- **Busca por Jogadores**: 
-  - Usuários podem buscar por outros jogadores filtrando por jogo, posição e status (disponível/ocupado).
+MongoDB
 
-- **Atualização de Status**: 
-  - Usuários podem atualizar seu status de jogo manualmente.
+Frontend:
 
-- **Mensagens Diretas**: 
-  - Funcionalidade para que os usuários se comuniquem antes de iniciar uma partida.
+React
 
-- **Feedback e Avaliações**: 
-  - Possibilidade de deixar feedback sobre experiências de jogo juntos.
+HTML
+
+CSS
+
+
+Funcionalidades
+
+Cadastro de Usuários:
+
+Registro de usuários informando nome, nick de jogo, jogos que jogam e status atual.
+
+Busca por Jogadores:
+
+Busca filtrada por jogo, posição e status (disponível/ocupado).
+
+Criação de Grupos:
+Permite que os jogadores criem grupos entre si para terem uma melhor experiencia compartilhada.
+
+Mensagens Diretas:
+
+Funcionalidade para comunicação entre jogadores antes de iniciar uma partida.
+
+Matchmaking Manual e sem compromisso:
+É rapido e facil, basta pesquisar o nome do jogo que deseja jogar e nosso site vai te mostrar todos os nossos usuarios que possuem interece no jogo.
+
+Estrutura do Projeto
+
+O backend foi desenvolvido utilizando Java e Spring Boot, garantindo escalabilidade e manutenção facilitada. A escolha pelo MongoDB como banco de dados permitiu flexibilidade no armazenamento de informações dos jogadores. O frontend, construído com React, proporciona uma interface responsiva e intuitiva.
