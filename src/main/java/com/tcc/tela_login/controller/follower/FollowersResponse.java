@@ -28,7 +28,6 @@ public class FollowersResponse {
 
     private Collection<Game> favoriteGames;
 
-    private Collection<Player> following
-            ;
+    private Collection<Player> following;
 
 }

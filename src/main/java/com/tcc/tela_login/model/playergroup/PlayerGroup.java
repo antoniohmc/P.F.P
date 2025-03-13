@@ -1,5 +1,6 @@
-package com.tcc.tela_login.model.player;
+package com.tcc.tela_login.model.playergroup;
 
+import com.tcc.tela_login.model.player.Player;
 import java.util.Collection;
 
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document(collection = "user_group")
+@Document(collection = "player_group")
 @Builder
 @Data
 @AllArgsConstructor
@@ -18,10 +19,14 @@ public class PlayerGroup {
     @Id
     private String id;
 
-    private Integer capacity;
+    private Player adm;
+
+    private String name;
+
+    private final Integer capacity = 5;
 
     private Collection<Player> players;
 
-    private Boolean open;
+    private Status status;
 
 }

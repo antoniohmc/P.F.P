@@ -2,6 +2,7 @@ package com.tcc.tela_login.model.player;
 
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.PlataformType;
+import com.tcc.tela_login.model.playergroup.PlayerGroup;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,4 +40,5 @@ public class Player {
     private Collection<Player> following;
 
     private Collection<PlayerGroup> playerGroups;
+
 }

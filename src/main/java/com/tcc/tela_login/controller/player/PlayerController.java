@@ -34,6 +34,13 @@ public class PlayerController {
                 .toList();
     }
 
+    @GetMapping("/username/{username}")
+    ResponseEntity<PlayerResponse> getPlayerByUsername(@PathVariable String username) {
+
+        Player player = playerService.findPlayerByUsername(username);
+        return ResponseEntity.ok(PlayerMapper.mapToResponse(player));
+    }
+
     @GetMapping("/login")
     String login(@RequestParam String username, @RequestParam String password) {
         boolean authenticated = playerService.authenticate(username, password);

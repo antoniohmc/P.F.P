@@ -8,12 +8,9 @@ import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.player.Player;
 import com.tcc.tela_login.repository.GameRepository;
 import com.tcc.tela_login.repository.PlayerRepository;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
-
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +27,12 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
+    public Player findPlayerByUsername(String username) {
+
+        return playerRepository.findByUsername(username)
+            .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador encontrado com esse nome"));
+    }
+
     private void checkUsernameAlreadyExisting(Player player) throws ExistingUserNameException {
         if (playerRepository.findByUsername(player.getUsername()).isPresent()) {
             throw new ExistingUserNameException("Nome de usuário já cadastrado, insira um novo nome.");
@@ -38,7 +41,7 @@ public class PlayerService {
 
     private Game getGameByName(String gameName) throws ExistingGameException {
         return gameRepository.findByName(gameName)
-                .orElseThrow(() -> new ExistingGameException("Jogo nao encontrado na base de dados do site."));
+            .orElseThrow(() -> new ExistingGameException("Jogo nao encontrado na base de dados do site."));
     }
 
     private void favoritingGames(Player player) {
@@ -79,8 +82,8 @@ public class PlayerService {
     private Player findPlayerByID(String id) throws NotFoundPlayer {
 
         return playerRepository
-                .findById(id)
-                .orElseThrow(() -> new NotFoundPlayer("Nenhum player encontrado com esse id"));
+            .findById(id)
+            .orElseThrow(() -> new NotFoundPlayer("Nenhum player encontrado com esse id"));
     }
 
     public Collection<Player> getPlayers() {
@@ -95,22 +98,22 @@ public class PlayerService {
         Player exist = findPlayerByID(id);
 
         Collection<Game> validGames = player.getFavoriteGames().stream()
-                .map(game -> getGameByName(game.getName()))
-                .toList();
+            .map(game -> getGameByName(game.getName()))
+            .toList();
 
         checkUsernameAlreadyExisting(player);
 
         Player updated = Player.builder()
-                .id(exist.getId())
-                .username(player.getUsername())
-                .email(player.getEmail())
-                .password(player.getPassword())
-                .location(player.getLocation())
-                .plataformType(player.getPlataformType())
-                .gamingTimePreferences(player.getGamingTimePreferences())
-                .favoriteGames(validGames)
-                .following(player.getFollowing())
-                .build();
+            .id(exist.getId())
+            .username(player.getUsername())
+            .email(player.getEmail())
+            .password(player.getPassword())
+            .location(player.getLocation())
+            .plataformType(player.getPlataformType())
+            .gamingTimePreferences(player.getGamingTimePreferences())
+            .favoriteGames(validGames)
+            .following(player.getFollowing())
+            .build();
 
         return playerRepository.save(updated);
     }
