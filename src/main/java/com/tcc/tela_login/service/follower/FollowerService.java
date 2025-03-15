@@ -52,8 +52,8 @@ public class FollowerService {
                 .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador encontrado com esse nome"));
     }
 
-    private void followYourself(Player player, Player follower) throws FollowYourself {
-        if (player.getId().equals(follower)) {
+    private void followYourself(Player follower, Player player) throws FollowYourself {
+        if (follower.getId().equals(player.getId())) {
             throw new FollowYourself("Você nao pode seguir a si mesmo.");
         }
     }
