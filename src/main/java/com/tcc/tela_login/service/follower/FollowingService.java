@@ -12,35 +12,31 @@ import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
-public class FollowerService {
+public class FollowingService {
 
     private final PlayerRepository playerRepository;
 
-    public Player follow(String playerId, String followerUsername) throws NotFoundPlayer, ExistingPlayer, FollowYourself {
-        var player = findPlayerById(playerId);
-        var follower = findPlayerByUsername(followerUsername);
+    public Player follow(String followerId, String playerToFollowUsername) throws NotFoundPlayer, ExistingPlayer, FollowYourself {
+        var follower = findPlayerById(followerId);
+        var player = findPlayerByUsername(playerToFollowUsername);
 
-        checkEverything(player, follower);
-        player.getFollowing().add(follower);
-        return playerRepository.save(player);
+        followYourself(follower, player);
+        checkFollowingListIsEmpty(follower);
+        checkPlayerInFollowerList(follower, player);
+
+        follower.getFollowing().add(player);
+        return playerRepository.save(follower);
     }
 
 
-    private void checkFollowerInFollowerList(Player newFollower, Player player) throws ExistingPlayer {
-        boolean alreadyExists = player.getFollowing().stream()
-                .anyMatch(follower -> follower.getUsername().equals(newFollower.getUsername()));
+    private void checkPlayerInFollowerList(Player follower, Player playerToFollow) throws ExistingPlayer {
+        boolean alreadyExists = follower.getFollowing().stream()
+                .anyMatch(f -> f.getUsername().equals(playerToFollow.getUsername()));
 
         if (alreadyExists) {
             throw new ExistingPlayer("Você Ja esta seguindo esse jogador");
         }
     }
-
-    private void checkEverything(Player player, Player follower) throws NotFoundPlayer, ExistingPlayer, FollowYourself {
-        followYourself(player, follower);
-        checkFollowerListIsEmpty(player);
-        checkFollowerInFollowerList(follower, player);
-    }
-
 
     private Player findPlayerById(String playerId) throws NotFoundPlayer {
         return playerRepository.findById(playerId)
@@ -52,16 +48,16 @@ public class FollowerService {
                 .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador encontrado com esse nome"));
     }
 
-    private void followYourself(Player follower, Player player) throws FollowYourself {
-        if (follower.getId().equals(player.getId())) {
+    private void followYourself(Player follower, Player playerToFollow) throws FollowYourself {
+        if (follower.getId().equals(playerToFollow.getId())) {
             throw new FollowYourself("Você nao pode seguir a si mesmo.");
         }
     }
 
-    private void checkFollowerListIsEmpty(Player player) {
+    private void checkFollowingListIsEmpty(Player follower) {
 
-        if (player.getFollowing() == null) {
-            player.setFollowing(new ArrayList<>());
+        if (follower.getFollowing() == null) {
+            follower.setFollowing(new ArrayList<>());
         }
     }
 }

@@ -30,4 +30,6 @@ public class FollowersResponse {
 
     private Collection<Player> following;
 
+    private Collection<Player> followers;
+
 }

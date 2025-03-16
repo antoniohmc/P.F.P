@@ -20,6 +20,7 @@ public class FollowersMapper {
                 .gamingTimePreferences(player.getGamingTimePreferences())
                 .favoriteGames(player.getFavoriteGames())
                 .following(mapFollowers(player))
+                .followers(mapFollowers(player))
                 .build();
     }
 

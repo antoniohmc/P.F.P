@@ -1,6 +1,5 @@
 package com.tcc.tela_login.controller.matchmaking;
 
-import com.tcc.tela_login.controller.player.PlayerResponse;
 import com.tcc.tela_login.model.player.Player;
 import com.tcc.tela_login.repository.PlayerRepository;
 import com.tcc.tela_login.service.matchmaking.MatchmakingService;
