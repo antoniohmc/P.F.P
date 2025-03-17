@@ -28,8 +28,6 @@ public class PlayerResponse {
 
     private PlataformType plataformType;
 
-    private Collection<DayTimePreference> gamingTimePreferences;
-
     private Collection<Game> favoriteGames;
 
     private Collection<Player> following;

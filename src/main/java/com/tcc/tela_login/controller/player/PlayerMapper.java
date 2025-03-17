@@ -21,7 +21,6 @@ public class PlayerMapper {
             .password(player.getPassword())
             .location(player.getLocation())
             .plataformType(player.getPlataformType())
-            .gamingTimePreferences(player.getGamingTimePreferences())
             .favoriteGames(player.getFavoriteGames())
             .build();
     }
@@ -34,7 +33,6 @@ public class PlayerMapper {
             .password(player.getPassword())
             .location(player.getLocation())
             .plataformType(player.getPlataformType())
-            .gamingTimePreferences(player.getGamingTimePreferences())
             .favoriteGames(mapToGame(player.getFavoriteGames()))
             .build();
     }

@@ -110,7 +110,6 @@ public class PlayerService {
             .password(player.getPassword())
             .location(player.getLocation())
             .plataformType(player.getPlataformType())
-            .gamingTimePreferences(player.getGamingTimePreferences())
             .favoriteGames(validGames)
             .following(player.getFollowing())
             .build();

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
-public class FollowingService {
+public class FollowService {
 
     private final PlayerRepository playerRepository;
 
@@ -26,6 +26,17 @@ public class FollowingService {
 
         follower.getFollowing().add(player);
         return playerRepository.save(follower);
+    }
+
+    public void unfollow(String followerId, String playerFollowingUsername) throws NotFoundPlayer {
+        var follower = findPlayerById(followerId);
+        var player = findPlayerByUsername(playerFollowingUsername);
+
+        if(follower.getFollowing().contains(player)) {
+            follower.getFollowing().remove(player);
+            playerRepository.save(follower);
+        }
+
     }
 
 
