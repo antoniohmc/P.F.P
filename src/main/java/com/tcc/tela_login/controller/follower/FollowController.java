@@ -14,10 +14,10 @@ public class FollowController {
     private final FollowService followService ;
 
 
-    @PostMapping("/{id}")
-    ResponseEntity<FollowersResponse> follow(@PathVariable String id, @RequestParam String playerName) {
+    @PostMapping("/{username}")
+    ResponseEntity<FollowersResponse> follow(@PathVariable String username, @RequestParam String playerToFollowName) {
 
-        Player save = followService.follow(id, playerName);
+        Player save = followService.follow(username, playerToFollowName);
         return ResponseEntity.ok(FollowersMapper.mapToResponse(save));
     }
 

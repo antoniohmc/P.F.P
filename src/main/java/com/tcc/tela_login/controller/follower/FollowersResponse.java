@@ -2,8 +2,6 @@ package com.tcc.tela_login.controller.follower;
 
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.PlataformType;
-import com.tcc.tela_login.model.player.DayTimePreference;
-import com.tcc.tela_login.model.player.Location;
 import com.tcc.tela_login.model.player.Player;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

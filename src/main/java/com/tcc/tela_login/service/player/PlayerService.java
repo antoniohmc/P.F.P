@@ -10,6 +10,7 @@ import com.tcc.tela_login.repository.GameRepository;
 import com.tcc.tela_login.repository.PlayerRepository;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -2,8 +2,6 @@ package com.tcc.tela_login.controller.player;
 
 import com.tcc.tela_login.model.game.PlataformType;
 import com.tcc.tela_login.model.game.Game;
-import com.tcc.tela_login.model.player.DayTimePreference;
-import com.tcc.tela_login.model.player.Location;
 import java.util.Collection;
 
 import com.tcc.tela_login.model.player.Player;
@@ -30,6 +28,6 @@ public class PlayerResponse {
 
     private Collection<Game> favoriteGames;
 
-    private Collection<String> following;
+    private Collection<Player> following;
 
 }

@@ -3,15 +3,16 @@ package com.tcc.tela_login.controller.game;
 import com.tcc.tela_login.exeptions.game.ExistingGameException;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.service.game.GameService;
+import java.util.Collection;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/game")
@@ -29,13 +30,21 @@ public class GameController {
         return GameMapper.mapToResponse(save);
     }
 
+    @GetMapping
+    Collection<GameResponse> getAllGames() {
+        return gameService.getAllGame()
+            .stream()
+            .map(GameMapper::mapToResponse)
+            .toList();
+    }
+
     @PostMapping("/cadastrar-multiplos")
-    private ResponseEntity<?> registerMultiple(@RequestBody List< GameRequest> requests) {
+    private ResponseEntity<?> registerMultiple(@RequestBody List<GameRequest> requests) {
         try {
             List<Game> savedGames = requests.stream()
-                    .map(GameMapper::mapToRequest)
-                    .map(gameService::registerGame)
-                    .toList();
+                .map(GameMapper::mapToRequest)
+                .map(gameService::registerGame)
+                .toList();
 
             return ResponseEntity.status(HttpStatus.CREATED).body(savedGames);
         } catch (ExistingGameException e) {

@@ -6,7 +6,6 @@ import com.tcc.tela_login.controller.game.GameRequest;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.player.Player;
 import java.util.Collection;
-import java.util.stream.Collectors;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = PRIVATE)
@@ -23,10 +22,7 @@ public class PlayerMapper {
             .country(player.getCountry())
             .plataformType(player.getPlataformType())
             .favoriteGames(player.getFavoriteGames())
-
-            .following(player.getFollowing().stream()
-                .map(Player::getUsername)
-                .collect(Collectors.toList()))
+            .following(player.getFollowing())
             .build();
     }
 

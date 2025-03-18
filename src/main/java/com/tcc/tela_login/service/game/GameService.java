@@ -3,6 +3,7 @@ package com.tcc.tela_login.service.game;
 import com.tcc.tela_login.exeptions.game.ExistingGameException;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.repository.GameRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,10 @@ public class GameService {
 
         gameRepository.save(newGame);
         return newGame;
+    }
+
+    public List<Game> getAllGame() {
+        return gameRepository.findAll();
     }
 
 
