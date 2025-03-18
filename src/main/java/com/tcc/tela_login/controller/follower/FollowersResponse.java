@@ -20,11 +20,9 @@ public class FollowersResponse {
 
     private String username;
 
-    private Location location;
+    private String country;
 
     private PlataformType plataformType;
-
-    private Collection<DayTimePreference> gamingTimePreferences;
 
     private Collection<Game> favoriteGames;
 

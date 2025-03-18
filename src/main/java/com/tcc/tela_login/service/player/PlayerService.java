@@ -79,6 +79,10 @@ public class PlayerService {
         playerRepository.deleteById(playerId);
     }
 
+    public void deleteAllPlayers() {
+        playerRepository.deleteAll();
+    }
+
     private Player findPlayerByID(String id) throws NotFoundPlayer {
 
         return playerRepository
@@ -108,7 +112,7 @@ public class PlayerService {
             .username(player.getUsername())
             .email(player.getEmail())
             .password(player.getPassword())
-            .location(player.getLocation())
+            .country(player.getCountry())
             .plataformType(player.getPlataformType())
             .favoriteGames(validGames)
             .following(player.getFollowing())

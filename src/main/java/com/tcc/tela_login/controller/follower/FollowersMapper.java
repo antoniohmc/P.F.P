@@ -15,7 +15,7 @@ public class FollowersMapper {
 
         return FollowersResponse.builder()
                 .username(player.getUsername())
-                .location(player.getLocation())
+                .country(player.getCountry())
                 .plataformType(player.getPlataformType())
                 .favoriteGames(player.getFavoriteGames())
                 .following(mapFollowers(player))
@@ -28,7 +28,7 @@ public class FollowersMapper {
         return player.getFollowing().stream()
                 .map(friend -> Player.builder()
                         .username(friend.getUsername())
-                        .location(friend.getLocation())
+                        .country(friend.getCountry())
                         .plataformType(friend.getPlataformType())
                         .following(Collections.emptyList())
                         .build()

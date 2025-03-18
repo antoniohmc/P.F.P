@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
@@ -28,13 +29,15 @@ public class Player {
 
     private String password;
 
-    private Location location;
+    private String country;
 
     private PlataformType plataformType;
 
     private Collection<Game> favoriteGames;
 
     private Collection<Player> following;
+
+    private Collection<Player> followers;
 
 
 }

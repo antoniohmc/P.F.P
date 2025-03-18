@@ -24,11 +24,12 @@ public class PlayerResponse {
 
     private String password;
 
-    private Location location;
+    private String country;
 
     private PlataformType plataformType;
 
     private Collection<Game> favoriteGames;
 
-    private Collection<Player> following;
+    private Collection<String> following;
+
 }

@@ -5,10 +5,9 @@ import com.tcc.tela_login.exeptions.player.ExistingPlayer;
 import com.tcc.tela_login.exeptions.player.NotFoundPlayer;
 import com.tcc.tela_login.model.player.Player;
 import com.tcc.tela_login.repository.PlayerRepository;
+import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +15,8 @@ public class FollowService {
 
     private final PlayerRepository playerRepository;
 
-    public Player follow(String followerId, String playerToFollowUsername) throws NotFoundPlayer, ExistingPlayer, FollowYourself {
+    public Player follow(String followerId, String playerToFollowUsername)
+        throws NotFoundPlayer, ExistingPlayer, FollowYourself {
         var follower = findPlayerById(followerId);
         var player = findPlayerByUsername(playerToFollowUsername);
 
@@ -32,17 +32,16 @@ public class FollowService {
         var follower = findPlayerById(followerId);
         var player = findPlayerByUsername(playerFollowingUsername);
 
-        if(follower.getFollowing().contains(player)) {
+        if (follower.getFollowing().contains(player)) {
             follower.getFollowing().remove(player);
             playerRepository.save(follower);
         }
-
     }
 
 
     private void checkPlayerInFollowerList(Player follower, Player playerToFollow) throws ExistingPlayer {
         boolean alreadyExists = follower.getFollowing().stream()
-                .anyMatch(f -> f.getUsername().equals(playerToFollow.getUsername()));
+            .anyMatch(f -> f.getUsername().equals(playerToFollow.getUsername()));
 
         if (alreadyExists) {
             throw new ExistingPlayer("Você Ja esta seguindo esse jogador");
@@ -51,12 +50,12 @@ public class FollowService {
 
     private Player findPlayerById(String playerId) throws NotFoundPlayer {
         return playerRepository.findById(playerId)
-                .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador existente com esse Id"));
+            .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador existente com esse Id"));
     }
 
     private Player findPlayerByUsername(String username) throws NotFoundPlayer {
         return playerRepository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador encontrado com esse nome"));
+            .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador encontrado com esse nome"));
     }
 
     private void followYourself(Player follower, Player playerToFollow) throws FollowYourself {
@@ -69,6 +68,13 @@ public class FollowService {
 
         if (follower.getFollowing() == null) {
             follower.setFollowing(new ArrayList<>());
+        }
+    }
+
+    private void checkFollowerListIsEmpty(Player player) {
+
+        if (player.getFollowers() == null) {
+            player.setFollowers(new ArrayList<>());
         }
     }
 }

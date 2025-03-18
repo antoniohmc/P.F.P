@@ -1,6 +1,7 @@
 package com.tcc.tela_login.controller.player;
 
 import com.tcc.tela_login.model.player.Player;
+import com.tcc.tela_login.repository.PlayerRepository;
 import com.tcc.tela_login.service.player.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.Collection;
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final PlayerRepository playerRepository;
 
     @PostMapping("/cadastrar")
     PlayerResponse register(@RequestBody PlayerRequest request) {
@@ -52,6 +54,13 @@ public class PlayerController {
         playerService.deletePlayer(id);
         return ResponseEntity.ok("Jogador deletado com sucesso!");
     }
+
+    @DeleteMapping("/delete-all")
+    public ResponseEntity<String> deleteAllPlayers() {
+        playerRepository.deleteAll();
+        return ResponseEntity.ok("Todos os jogadores foram excluídos.");
+    }
+
 
     //TODO: refatorar a atualização, pois nao esta atualizando os horarios de preferencia do player.
 

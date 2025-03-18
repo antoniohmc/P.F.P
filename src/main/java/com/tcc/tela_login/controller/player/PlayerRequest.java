@@ -22,7 +22,7 @@ public class PlayerRequest {
 
     String password;
 
-    Location location;
+    String country;
 
     PlataformType plataformType;
 
