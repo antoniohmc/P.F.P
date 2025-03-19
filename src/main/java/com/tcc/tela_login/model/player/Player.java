@@ -37,7 +37,4 @@ public class Player {
 
     private Collection<Player> following;
 
-    private Collection<Player> followers;
-
-
 }

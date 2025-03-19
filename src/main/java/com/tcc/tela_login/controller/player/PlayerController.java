@@ -64,11 +64,11 @@ public class PlayerController {
 
     //TODO: refatorar a atualização, pois nao esta atualizando os horarios de preferencia do player.
 
-    @PutMapping(path = "/{id}")
-    PlayerResponse update(@PathVariable String id, @RequestBody PlayerRequest request) {
+    @PutMapping(path = "/{username}")
+    PlayerResponse update(@PathVariable String username, @RequestBody PlayerRequest request) {
 
         Player player = PlayerMapper.mapToRequest(request);
-        Player atualizado = playerService.updatePlayer(id, player);
+        Player atualizado = playerService.updatePlayer(username, player);
 
         return PlayerMapper.mapToResponse(atualizado);
     }

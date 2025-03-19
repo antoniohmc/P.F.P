@@ -28,8 +28,8 @@ public class FollowService {
         return playerRepository.save(follower);
     }
 
-    public void unfollow(String followerId, String playerFollowingUsername) throws NotFoundPlayer {
-        var follower = findPlayerById(followerId);
+    public void unfollow(String followerUsername, String playerFollowingUsername) throws NotFoundPlayer {
+        var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerFollowingUsername);
 
         if (follower.getFollowing().contains(player)) {
@@ -71,10 +71,4 @@ public class FollowService {
         }
     }
 
-    private void checkFollowerListIsEmpty(Player player) {
-
-        if (player.getFollowers() == null) {
-            player.setFollowers(new ArrayList<>());
-        }
-    }
 }

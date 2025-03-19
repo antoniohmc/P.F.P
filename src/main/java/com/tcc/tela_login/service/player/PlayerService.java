@@ -104,7 +104,6 @@ public class PlayerService {
             .country(player.getCountry())
             .plataformType(player.getPlataformType())
             .favoriteGames(validGames)
-            .following(player.getFollowing())
             .build();
 
         return playerRepository.save(updated);
