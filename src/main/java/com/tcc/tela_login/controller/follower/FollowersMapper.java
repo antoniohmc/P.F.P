@@ -18,13 +18,12 @@ public class FollowersMapper {
                 .country(player.getCountry())
                 .plataformType(player.getPlataformType())
                 .favoriteGames(player.getFavoriteGames())
-                .following(mapFollowers(player))
-                .followers(mapFollowers(player))
+                .following(mapPlayersToFollowing(player))
                 .build();
     }
 
 
-    private static Collection<Player> mapFollowers(Player player) {
+    private static Collection<Player> mapPlayersToFollowing(Player player) {
         return player.getFollowing().stream()
                 .map(friend -> Player.builder()
                         .username(friend.getUsername())

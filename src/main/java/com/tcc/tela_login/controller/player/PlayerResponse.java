@@ -1,10 +1,9 @@
 package com.tcc.tela_login.controller.player;
 
-import com.tcc.tela_login.model.game.PlataformType;
 import com.tcc.tela_login.model.game.Game;
-import java.util.Collection;
-
+import com.tcc.tela_login.model.game.PlataformType;
 import com.tcc.tela_login.model.player.Player;
+import java.util.Collection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,20 +13,20 @@ import lombok.Data;
 @AllArgsConstructor
 public class PlayerResponse {
 
-    private String id;
+    String id;
 
-    private String username;
+    String username;
 
-    private String email;
+    String email;
 
-    private String password;
+    String password;
 
-    private String country;
+    String country;
 
-    private PlataformType plataformType;
+    PlataformType plataformType;
 
-    private Collection<Game> favoriteGames;
+    Collection<Game> favoriteGames;
 
-    private Collection<Player> following;
+    Collection<Player> following;
 
 }

@@ -15,9 +15,9 @@ public class FollowService {
 
     private final PlayerRepository playerRepository;
 
-    public Player follow(String followerId, String playerToFollowUsername)
+    public Player follow(String followerUsername, String playerToFollowUsername)
         throws NotFoundPlayer, ExistingPlayer, FollowYourself {
-        var follower = findPlayerById(followerId);
+        var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerToFollowUsername);
 
         followYourself(follower, player);

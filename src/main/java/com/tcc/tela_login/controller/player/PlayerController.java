@@ -35,7 +35,7 @@ public class PlayerController {
                 .map(PlayerMapper::mapToResponse)
                 .toList();
     }
-
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/username/{username}")
     ResponseEntity<PlayerResponse> getPlayerByUsername(@PathVariable String username) {
 

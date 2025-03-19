@@ -10,7 +10,6 @@ import com.tcc.tela_login.repository.GameRepository;
 import com.tcc.tela_login.repository.PlayerRepository;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -80,17 +79,6 @@ public class PlayerService {
         playerRepository.deleteById(playerId);
     }
 
-    public void deleteAllPlayers() {
-        playerRepository.deleteAll();
-    }
-
-    private Player findPlayerByID(String id) throws NotFoundPlayer {
-
-        return playerRepository
-            .findById(id)
-            .orElseThrow(() -> new NotFoundPlayer("Nenhum player encontrado com esse id"));
-    }
-
     public Collection<Player> getPlayers() {
 
         return playerRepository.findAll();
@@ -98,9 +86,9 @@ public class PlayerService {
 
     //TODO if you have time, implement new method that prevent to add a new username to already exist.
     //TODO if you have time, implement new method that prevent to add one game is already exist in te favorite games list.
-    public Player updatePlayer(String id, Player player) {
+    public Player updatePlayer(String username, Player player) {
 
-        Player exist = findPlayerByID(id);
+        Player exist = findPlayerByUsername(username);
 
         Collection<Game> validGames = player.getFavoriteGames().stream()
             .map(game -> getGameByName(game.getName()))
