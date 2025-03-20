@@ -34,9 +34,12 @@ public class PlayerService {
     }
 
     private void checkUsernameAlreadyExisting(Player player) throws ExistingUserNameException {
-        if (playerRepository.findByUsername(player.getUsername()).isPresent()) {
-            throw new ExistingUserNameException("Nome de usuário já cadastrado, insira um novo nome.");
+        Optional<Player> playerAlreadyExist = playerRepository.findByUsername(player.getUsername());
+
+        if (playerAlreadyExist.isPresent() && !playerAlreadyExist.get().getId().equals(player.getId())) {
+            throw new ExistingUserNameException("Nome já está em uso.");
         }
+
     }
 
     private Game getGameByName(String gameName) throws ExistingGameException {
@@ -94,7 +97,13 @@ public class PlayerService {
             .map(game -> getGameByName(game.getName()))
             .toList();
 
-        checkUsernameAlreadyExisting(player);
+        if (!player.getUsername().equals(exist.getUsername())) {
+            checkUsernameAlreadyExisting(player);
+        }
+
+        if (player.getPassword() == null) {
+            player.setPassword(exist.getPassword());
+        }
 
         Player updated = Player.builder()
             .id(exist.getId())

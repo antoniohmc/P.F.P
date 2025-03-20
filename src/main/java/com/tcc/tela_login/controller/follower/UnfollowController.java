@@ -17,8 +17,8 @@ public class UnfollowController {
     private final FollowService followingService;
 
     @PostMapping("/{username}")
-    ResponseEntity<?> unfollow(@PathVariable String followerUsername, @RequestParam String playerName) {
-        followingService.unfollow(followerUsername, playerName);
+    ResponseEntity<?> unfollow(@PathVariable String username, @RequestParam String playerName) {
+        followingService.unfollow(username, playerName);
         return ResponseEntity.ok("Você deixou de seguir esse jogador!");
     }
 }
