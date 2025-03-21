@@ -10,6 +10,9 @@ import com.tcc.tela_login.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class FollowService {
@@ -17,8 +20,7 @@ public class FollowService {
     private final PlayerRepository playerRepository;
     private final FollowRepository followRepository;
 
-    public void follow(String followerUsername, String playerToFollowUsername)
-        throws NotFoundPlayer, ExistingPlayer, FollowYourself {
+    public void follow(String followerUsername, String playerToFollowUsername) throws NotFoundPlayer, ExistingPlayer, FollowYourself {
         var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerToFollowUsername);
 
@@ -33,8 +35,16 @@ public class FollowService {
         var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerFollowingUsername);
 
-        followRepository.findByFollowerIdAndFollowingId(follower.getId(), player.getId())
-            .ifPresent(followRepository::delete);
+        followRepository.findByFollowerIdAndFollowingId(follower.getId(), player.getId()).ifPresent(followRepository::delete);
+    }
+
+    public Collection<String> getFollowingUsernames(String playerId) {
+        Collection<Follow> follows = followRepository.findByFollowerId(playerId);
+
+        return follows.stream().map(follow -> playerRepository.findById(follow.getFollowingId())  // Busca pelo ID do jogador seguido
+                        .map(Player::getUsername)
+                        .orElse("Desconhecido"))
+                .collect(Collectors.toList());
     }
 
     private void checkPlayerInFollowerList(Player follower, Player playerToFollow) throws ExistingPlayer {
@@ -47,7 +57,7 @@ public class FollowService {
 
     private Player findPlayerByUsername(String username) throws NotFoundPlayer {
         return playerRepository.findByUsername(username)
-            .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador encontrado com esse nome"));
+                .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador encontrado com esse nome"));
     }
 
     private void followYourself(Player follower, Player playerToFollow) throws FollowYourself {
