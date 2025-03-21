@@ -27,6 +27,12 @@ public class PlayerController {
         return PlayerMapper.mapToResponse(save);
     }
 
+    @PostMapping("/{username}/addNewGame")
+    ResponseEntity<?> addGameToFavoritingList(@PathVariable String username, @RequestParam String gameName) {
+        playerService.addMoreFavoritingGames(username, gameName);
+        return ResponseEntity.ok("Jogo adicionado com a sua lista de jogos favoritos!");
+    }
+
     @GetMapping
     Collection<PlayerResponse> getPlayers() {
 
@@ -35,6 +41,7 @@ public class PlayerController {
                 .map(PlayerMapper::mapToResponse)
                 .toList();
     }
+
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/username/{username}")
     ResponseEntity<PlayerResponse> getPlayerByUsername(@PathVariable String username) {
@@ -56,7 +63,7 @@ public class PlayerController {
     }
 
     @DeleteMapping("/delete-all")
-    public ResponseEntity<String> deleteAllPlayers() {
+    ResponseEntity<String> deleteAllPlayers() {
         playerRepository.deleteAll();
         return ResponseEntity.ok("Todos os jogadores foram excluídos.");
     }
