@@ -1,6 +1,5 @@
 package com.tcc.tela_login.model.player;
 
-import com.tcc.tela_login.model.follow.Follow;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.PlataformType;
 import lombok.AllArgsConstructor;
@@ -35,5 +34,4 @@ public class Player {
 
     private Collection<Game> favoriteGames;
 
-    private Collection<Player> following;
 }
