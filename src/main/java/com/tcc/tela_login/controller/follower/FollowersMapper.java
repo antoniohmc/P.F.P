@@ -1,37 +1,30 @@
 package com.tcc.tela_login.controller.follower;
 
-import static lombok.AccessLevel.PRIVATE;
-
 import com.tcc.tela_login.model.player.Player;
+import com.tcc.tela_login.repository.FollowRepository;
+import com.tcc.tela_login.repository.PlayerRepository;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.Collections;
-import lombok.NoArgsConstructor;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@NoArgsConstructor(access = PRIVATE)
+@Component
+@RequiredArgsConstructor
 public class FollowersMapper {
 
-    static FollowersResponse mapToResponse(Player player) {
+    private final PlayerRepository playerRepository;
+    private final FollowRepository followRepository;
 
-        return FollowersResponse.builder()
-                .username(player.getUsername())
-                .country(player.getCountry())
-                .plataformType(player.getPlataformType())
-                .favoriteGames(player.getFavoriteGames())
-                .following(mapPlayersToFollowing(player))
-                .build();
-    }
+    public List<Player> getFollowing(String username) {
+        var player = playerRepository.findByUsername(username)
+            .orElseThrow(() -> new RuntimeException("Jogador não encontrado"));
 
-
-    private static Collection<Player> mapPlayersToFollowing(Player player) {
-        return player.getFollowing().stream()
-                .map(friend -> Player.builder()
-                        .username(friend.getUsername())
-                        .country(friend.getCountry())
-                        .plataformType(friend.getPlataformType())
-                        .following(Collections.emptyList())
-                        .build()
-                )
-                .toList();
+        return followRepository.findByFollowerId(player.getId()).stream()
+            .map(follow -> playerRepository.findById(follow.getFollowingId()))
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .collect(Collectors.toList());
     }
 }

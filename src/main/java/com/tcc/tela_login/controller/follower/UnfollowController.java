@@ -3,8 +3,8 @@ package com.tcc.tela_login.controller.follower;
 import com.tcc.tela_login.service.follower.FollowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/unfollow")
 public class UnfollowController {
 
-    private final FollowService followingService;
+    private final FollowService followService;
 
-    @PostMapping("/{username}")
-    ResponseEntity<?> unfollow(@PathVariable String username, @RequestParam String playerName) {
-        followingService.unfollow(username, playerName);
-        return ResponseEntity.ok("Você deixou de seguir esse jogador!");
+    @DeleteMapping("/{username}")
+    public ResponseEntity<String> unfollow(@PathVariable String username, @RequestParam String playerToUnfollowName) {
+        followService.unfollow(username, playerToUnfollowName);
+        return ResponseEntity.ok("Você deixou de seguir " + playerToUnfollowName);
     }
 }

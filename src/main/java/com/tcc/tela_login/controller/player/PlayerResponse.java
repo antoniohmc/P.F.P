@@ -1,8 +1,8 @@
 package com.tcc.tela_login.controller.player;
 
+import com.tcc.tela_login.controller.follower.FollowersResponse;
 import com.tcc.tela_login.model.game.Game;
 import com.tcc.tela_login.model.game.PlataformType;
-import com.tcc.tela_login.model.player.Player;
 import java.util.Collection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +27,6 @@ public class PlayerResponse {
 
     Collection<Game> favoriteGames;
 
-    Collection<Player> following;
+    Collection<FollowersResponse> following;
 
 }

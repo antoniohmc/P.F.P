@@ -3,9 +3,10 @@ package com.tcc.tela_login.service.follower;
 import com.tcc.tela_login.exeptions.follower.FollowYourself;
 import com.tcc.tela_login.exeptions.player.ExistingPlayer;
 import com.tcc.tela_login.exeptions.player.NotFoundPlayer;
+import com.tcc.tela_login.model.follow.Follow;
 import com.tcc.tela_login.model.player.Player;
+import com.tcc.tela_login.repository.FollowRepository;
 import com.tcc.tela_login.repository.PlayerRepository;
-import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,43 +15,34 @@ import org.springframework.stereotype.Service;
 public class FollowService {
 
     private final PlayerRepository playerRepository;
+    private final FollowRepository followRepository;
 
-    public Player follow(String followerUsername, String playerToFollowUsername)
+    public void follow(String followerUsername, String playerToFollowUsername)
         throws NotFoundPlayer, ExistingPlayer, FollowYourself {
         var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerToFollowUsername);
 
         followYourself(follower, player);
-        checkFollowingListIsEmpty(follower);
         checkPlayerInFollowerList(follower, player);
 
-        follower.getFollowing().add(player);
-        return playerRepository.save(follower);
+        Follow follow = new Follow(null, follower.getId(), player.getId());
+        followRepository.save(follow);
     }
 
     public void unfollow(String followerUsername, String playerFollowingUsername) throws NotFoundPlayer {
         var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerFollowingUsername);
 
-        if (follower.getFollowing().contains(player)) {
-            follower.getFollowing().remove(player);
-            playerRepository.save(follower);
-        }
+        followRepository.findByFollowerIdAndFollowingId(follower.getId(), player.getId())
+            .ifPresent(followRepository::delete);
     }
-
 
     private void checkPlayerInFollowerList(Player follower, Player playerToFollow) throws ExistingPlayer {
-        boolean alreadyExists = follower.getFollowing().stream()
-            .anyMatch(f -> f.getUsername().equals(playerToFollow.getUsername()));
+        boolean alreadyExists = followRepository.findByFollowerIdAndFollowingId(follower.getId(), playerToFollow.getId()).isPresent();
 
         if (alreadyExists) {
-            throw new ExistingPlayer("Você Ja esta seguindo esse jogador");
+            throw new ExistingPlayer("Você já está seguindo esse jogador");
         }
-    }
-
-    private Player findPlayerById(String playerId) throws NotFoundPlayer {
-        return playerRepository.findById(playerId)
-            .orElseThrow(() -> new NotFoundPlayer("Nenhum jogador existente com esse Id"));
     }
 
     private Player findPlayerByUsername(String username) throws NotFoundPlayer {
@@ -60,15 +52,7 @@ public class FollowService {
 
     private void followYourself(Player follower, Player playerToFollow) throws FollowYourself {
         if (follower.getId().equals(playerToFollow.getId())) {
-            throw new FollowYourself("Você nao pode seguir a si mesmo.");
+            throw new FollowYourself("Você não pode seguir a si mesmo.");
         }
     }
-
-    private void checkFollowingListIsEmpty(Player follower) {
-
-        if (follower.getFollowing() == null) {
-            follower.setFollowing(new ArrayList<>());
-        }
-    }
-
 }
