@@ -15,5 +15,6 @@ public class Follow {
     private String id;
 
     private String followerId;
+
     private String followingId;
 }
