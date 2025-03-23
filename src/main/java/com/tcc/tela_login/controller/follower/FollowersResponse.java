@@ -1,7 +1,6 @@
 package com.tcc.tela_login.controller.follower;
 
 import com.tcc.tela_login.model.game.Game;
-import com.tcc.tela_login.model.game.PlataformType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,11 +14,11 @@ import java.util.Collection;
 @NoArgsConstructor
 public class FollowersResponse {
 
-    private String username;
+    private java.lang.String username;
 
-    private String country;
+    private java.lang.String country;
 
-    private PlataformType plataformType;
+    private String plataformType;
 
     private Collection<Game> favoriteGames;
 

@@ -1,7 +1,6 @@
 package com.tcc.tela_login.model.player;
 
 import com.tcc.tela_login.model.game.Game;
-import com.tcc.tela_login.model.game.PlataformType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,17 +19,17 @@ import java.util.Collection;
 public class Player {
 
     @Id
-    private String id;
+    private java.lang.String id;
 
-    private String username;
+    private java.lang.String username;
 
-    private String email;
+    private java.lang.String email;
 
-    private String password;
+    private java.lang.String password;
 
-    private String country;
+    private java.lang.String country;
 
-    private PlataformType plataformType;
+    private String plataformType;
 
     private Collection<Game> favoriteGames;
 
