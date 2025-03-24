@@ -68,9 +68,6 @@ public class PlayerController {
         return ResponseEntity.ok("Todos os jogadores foram excluídos.");
     }
 
-
-    //TODO: refatorar a atualização, pois nao esta atualizando os horarios de preferencia do player.
-
     @PutMapping(path = "/{username}")
     PlayerResponse update(@PathVariable String username, @RequestBody PlayerRequest request) {
 

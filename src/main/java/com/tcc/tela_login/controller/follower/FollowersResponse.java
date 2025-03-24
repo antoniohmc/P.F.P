@@ -14,9 +14,9 @@ import java.util.Collection;
 @NoArgsConstructor
 public class FollowersResponse {
 
-    private java.lang.String username;
+    private String username;
 
-    private java.lang.String country;
+    private String country;
 
     private String plataformType;
 

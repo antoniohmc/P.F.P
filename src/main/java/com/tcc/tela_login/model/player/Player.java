@@ -10,10 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
 
-/**
- * Moldelo da classe Player.
- */
-
 @Document(collection = "player")
 @Data
 @Builder
@@ -22,15 +18,15 @@ import java.util.Collection;
 public class Player {
 
     @Id
-    private java.lang.String id;
+    private String id;
 
-    private java.lang.String username;
+    private String username;
 
-    private java.lang.String email;
+    private String email;
 
-    private java.lang.String password;
+    private String password;
 
-    private java.lang.String country;
+    private String country;
 
     private String plataformType;
 

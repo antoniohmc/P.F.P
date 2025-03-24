@@ -14,13 +14,13 @@ import java.util.Collection;
 @Builder
 public class PlayerRequest {
 
-    java.lang.String username;
+    String username;
 
-    java.lang.String email;
+    String email;
 
-    java.lang.String password;
+    String password;
 
-    java.lang.String country;
+    String country;
 
     String plataformType;
 

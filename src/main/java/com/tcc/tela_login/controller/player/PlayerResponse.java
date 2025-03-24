@@ -1,6 +1,5 @@
 package com.tcc.tela_login.controller.player;
 
-import com.tcc.tela_login.controller.follower.FollowersResponse;
 import com.tcc.tela_login.model.game.Game;
 
 import java.util.Collection;
@@ -13,15 +12,15 @@ import lombok.Data;
 @AllArgsConstructor
 public class PlayerResponse {
 
-    java.lang.String id;
+    String id;
 
-    java.lang.String username;
+    String username;
 
-    java.lang.String email;
+    String email;
 
-    java.lang.String password;
+    String password;
 
-    java.lang.String country;
+    String country;
 
     String plataformType;
 
