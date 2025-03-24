@@ -27,15 +27,15 @@ public class PlayerMapper {
                 .build();
     }
 
-    static Player mapToRequest(PlayerRequest player) {
+    static Player mapToRequest(PlayerRequest request) {
 
         return Player.builder()
-                .username(player.getUsername())
-                .email(player.getEmail())
-                .password(player.getPassword())
-                .country(player.getCountry())
-                .plataformType(player.getPlataformType())
-                .favoriteGames(mapToGame(player.getFavoriteGames()))
+                .username(request.getUsername())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .country(request.getCountry())
+                .plataformType(request.getPlataformType())
+                .favoriteGames(mapToGame(request.getFavoriteGames()))
                 .build();
     }
 

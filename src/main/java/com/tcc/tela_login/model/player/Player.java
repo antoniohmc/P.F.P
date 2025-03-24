@@ -10,6 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
 
+/**
+ * Moldelo da classe Player.
+ */
 
 @Document(collection = "player")
 @Data
