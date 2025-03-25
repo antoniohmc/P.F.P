@@ -110,5 +110,5 @@ Este projeto é de código aberto e pode ser modificado conforme necessário.
 ---
 
 ## 👨‍💻 Autor
-**[Seu Nome]** - Desenvolvedor Backend
+**[Antônio Campos]** - Desenvolvedor Backend
 
