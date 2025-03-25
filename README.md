@@ -61,6 +61,7 @@ Este projeto é uma API desenvolvida em **Java Spring Boot** com **MongoDB** par
 - **Java 21**
 - **MongoDB** instalado e rodando localmente
 - **Maven** instalado
+- **Lombok** configurado na IDE (Necessário para compilar corretamente)
 
 ### ▶️ Passos para Rodar o Projeto
 1. Clone o repositório:
