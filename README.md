@@ -1,49 +1,45 @@
-📌 Sistema de Gerenciamento de Jogadores e Matchmaking
-📖 Sobre o Projeto
-Este projeto é uma API desenvolvida em Java Spring Boot com MongoDB para o gerenciamento de jogadores, jogos e um sistema de matchmaking. Ele permite que usuários se registrem, sigam outros jogadores e encontrem usuários com interesses em jogos similares.
+# 📌 Sistema de Gerenciamento de Jogadores e Matchmaking
 
-🚀 Funcionalidades
-🎮 Gerenciamento de Jogadores
-Cadastro de novos jogadores com nome de usuário, email, senha, país e plataforma utilizada.
+## 📖 Sobre o Projeto
+Este projeto é uma API desenvolvida em **Java Spring Boot** com **MongoDB** para o gerenciamento de jogadores, jogos e um sistema de matchmaking. Ele permite que usuários se registrem, sigam outros jogadores e encontrem usuários com interesses em jogos similares.
 
-Autenticação de jogadores com verificação de credenciais.
+---
 
-Atualização e remoção de jogadores.
+## 🚀 Funcionalidades
 
-Adição de jogos favoritos ao perfil do jogador.
+### 🎮 Gerenciamento de Jogadores
+- Cadastro de novos jogadores com nome de usuário, email, senha, país e plataforma utilizada.
+- Autenticação de jogadores com verificação de credenciais.
+- Atualização e remoção de jogadores.
+- Adição de jogos favoritos ao perfil do jogador.
 
-🔗 Sistema de Seguidores (Follow)
-Seguir outros jogadores.
+### 🔗 Sistema de Seguidores (Follow)
+- Seguir outros jogadores.
+- Deixar de seguir jogadores.
+- Listar jogadores seguidos por um usuário.
 
-Deixar de seguir jogadores.
+### 🕹️ Gerenciamento de Jogos
+- Cadastro de novos jogos.
+- Listagem de todos os jogos disponíveis.
 
-Listar jogadores seguidos por um usuário.
+### 🤝 Matchmaking
+- Buscar jogadores que têm um jogo específico como favorito.
 
-🕹️ Gerenciamento de Jogos
-Cadastro de novos jogos.
+---
 
-Listagem de todos os jogos disponíveis.
+## 🛠️ Tecnologias Utilizadas
+- **Java 21**
+- **Spring Boot 3.3.5** (Spring Data, Spring Web)
+- **MongoDB** (Banco de dados NoSQL)
+- **Lombok** (Para reduzir boilerplate code)
+- **SpringDoc OpenAPI** (Para documentação da API)
+- **Gradle** (Gerenciador de dependências)
 
-🤝 Matchmaking
-Buscar jogadores que têm um jogo específico como favorito.
+---
 
-🛠️ Tecnologias Utilizadas
-Java 21
+## 📂 Estrutura do Projeto
 
-Spring Boot 3.3.5 (Spring Data, Spring Web)
-
-MongoDB (Banco de dados NoSQL)
-
-Lombok (Para reduzir boilerplate code)
-
-SpringDoc OpenAPI (Para documentação da API)
-
-Gradle (Gerenciador de dependências)
-
-📂 Estrutura do Projeto
-bash
-Copiar
-Editar
+```
 📦 src
  ┣ 📂 main
  ┃ ┣ 📂 java
@@ -56,42 +52,39 @@ Editar
  ┃ ┃ ┃ ┗ 📜 Application.java  # Classe principal
  ┃ ┗ 📂 resources
  ┃ ┃ ┗ 📜 application.properties  # Configurações do banco de dados
-🔧 Configuração e Execução
-📥 Pré-requisitos
-Java 21
+```
 
-MongoDB instalado e rodando localmente
+---
 
-Gradle instalado
+## 🔧 Configuração e Execução
+### 📥 Pré-requisitos
+- **Java 21**
+- **MongoDB** instalado e rodando localmente
+- **Gradle** instalado
+- **Lombok** configurado na IDE (Necessário para compilar corretamente)
 
-Lombok configurado na IDE (Necessário para compilar corretamente)
+### ▶️ Passos para Rodar o Projeto
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/tela-login.git
+   ```
+2. Acesse a pasta do projeto:
+   ```bash
+   cd tela-login
+   ```
+3. Configure o banco de dados MongoDB no arquivo `application.properties`:
+   ```properties
+   spring.data.mongodb.uri=mongodb://localhost:27017/tela_login
+   ```
+4. Compile e execute o projeto:
+   ```bash
+   ./gradlew bootRun
+   ```
 
-▶️ Passos para Rodar o Projeto
-Clone o repositório:
+---
 
-bash
-Copiar
-Editar
-git clone https://github.com/seu-usuario/tela-login.git
-Acesse a pasta do projeto:
+## 📌 Endpoints da API
 
-bash
-Copiar
-Editar
-cd tela-login
-Configure o banco de dados MongoDB no arquivo application.properties:
-
-properties
-Copiar
-Editar
-spring.data.mongodb.uri=mongodb://localhost:27017/tela_login
-Compile e execute o projeto:
-
-bash
-Copiar
-Editar
-./gradlew bootRun
-📌 Endpoints da API
 📌 Jogadores
 Cadastrar jogador:
 POST /player/cadastrar
@@ -156,11 +149,13 @@ Buscar jogadores por jogo favorito:
 GET /matchmaking/{gameName}
 Descrição: Busca jogadores que têm o jogo especificado como favorito.
 
-📜 Licença
+## 📜 Licença
 Este projeto é de código aberto e pode ser modificado conforme necessário.
 
-👨‍💻 Autor
-[Antônio Campos] - Desenvolvedor Backend
+---
+
+## 👨‍💻 Autor
+**[Antônio Campos]** - Desenvolvedor Backend
 
 📑 Documentação Completa da API
 Para acessar a documentação completa da API, acesse o Swagger da API:
