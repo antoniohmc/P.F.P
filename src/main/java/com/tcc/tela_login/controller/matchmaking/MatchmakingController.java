@@ -17,8 +17,6 @@ public class MatchmakingController {
 
     private final MatchmakingService matchmakingService;
 
-
-
     @GetMapping("/filtrar")
     public ResponseEntity<Collection<FindPlayerResponse>> matchmakingPlayers(@RequestParam String gameName) {
         Collection<Player> players = matchmakingService.findPlayersByGame(gameName);

@@ -1,7 +1,6 @@
 package com.tcc.tela_login.service.player;
 
 import com.tcc.tela_login.controller.follower.FollowersResponse;
-import com.tcc.tela_login.exeptions.game.ExistingGameException;
 import com.tcc.tela_login.exeptions.game.GameAlreadyAddException;
 import com.tcc.tela_login.exeptions.game.GameNotFoundException;
 import com.tcc.tela_login.exeptions.player.ExistingUserNameException;
