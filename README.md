@@ -1,36 +1,114 @@
-# P.F.P
+# 📌 Sistema de Gerenciamento de Jogadores e Matchmaking
 
-Um sistema de matchmaking manual e gratuito, onde jogadores podem facilmente formar equipes sem compromisso. Este projeto esta sendo desenvolvido com a utilização de Java (Spring Boot, Spring JPA, Hibernate), Angular e MySQL.
+## 📖 Sobre o Projeto
+Este projeto é uma API desenvolvida em **Java Spring Boot** com **MongoDB** para o gerenciamento de jogadores, jogos e um sistema de matchmaking. Ele permite que usuários se registrem, sigam outros jogadores e encontrem usuários com interesses em jogos similares.
 
-## Descrição
+---
 
-Este aplicativo permite que jogadores se cadastrem, indiquem quais jogos estão jogando e busquem outros jogadores para formar equipes. A ideia é criar uma plataforma onde os usuários possam se conectar, trocar experiências e jogar juntos de forma simples e descomplicada.
+## 🚀 Funcionalidades
 
-## Tecnologias Utilizadas
+### 🎮 Gerenciamento de Jogadores
+- Cadastro de novos jogadores com nome de usuário, email, senha, país e plataforma utilizada.
+- Autenticação de jogadores com verificação de credenciais.
+- Atualização e remoção de jogadores.
+- Adição de jogos favoritos ao perfil do jogador.
 
-- **Backend**: 
-  - Java
-  - Spring Boot
-  - Spring JPA
-  - Hibernate
-  - MySQL
+### 🔗 Sistema de Seguidores (Follow)
+- Seguir outros jogadores.
+- Deixar de seguir jogadores.
+- Listar jogadores seguidos por um usuário.
 
-- **Frontend**: 
-  - Angular
+### 🕹️ Gerenciamento de Jogos
+- Cadastro de novos jogos.
+- Listagem de todos os jogos disponíveis.
 
-## Funcionalidades
+### 🤝 Matchmaking
+- Buscar jogadores que têm um jogo específico como favorito.
 
-- **Cadastro de Usuários**: 
-  - Permite que usuários se registrem informando detalhes como nome, nick de jogo, jogos que jogam e status atual.
+---
 
-- **Busca por Jogadores**: 
-  - Usuários podem buscar por outros jogadores filtrando por jogo, posição e status (disponível/ocupado).
+## 🛠️ Tecnologias Utilizadas
+- **Java 21**
+- **Spring Boot 3.3.5** (Spring Data, Spring Web)
+- **MongoDB** (Banco de dados NoSQL)
+- **Lombok** (Para reduzir boilerplate code)
+- **SpringDoc OpenAPI** (Para documentação da API)
+- **Maven** (Gerenciador de dependências)
 
-- **Atualização de Status**: 
-  - Usuários podem atualizar seu status de jogo manualmente.
+---
 
-- **Mensagens Diretas**: 
-  - Funcionalidade para que os usuários se comuniquem antes de iniciar uma partida.
+## 📂 Estrutura do Projeto
 
-- **Feedback e Avaliações**: 
-  - Possibilidade de deixar feedback sobre experiências de jogo juntos.
+```
+📦 src
+ ┣ 📂 main
+ ┃ ┣ 📂 java
+ ┃ ┃ ┣ 📂 com.tcc
+ ┃ ┃ ┃ ┣ 📂 controller  # Controladores da API
+ ┃ ┃ ┃ ┣ 📂 model       # Modelos de dados
+ ┃ ┃ ┃ ┣ 📂 repository  # Interfaces de acesso ao banco
+ ┃ ┃ ┃ ┣ 📂 service     # Lógica de negócios
+ ┃ ┃ ┃ ┣ 📂 exceptions  # Exceções personalizadas
+ ┃ ┃ ┃ ┗ 📜 Application.java  # Classe principal
+ ┃ ┗ 📂 resources
+ ┃ ┃ ┗ 📜 application.properties  # Configurações do banco de dados
+```
+
+---
+
+## 🔧 Configuração e Execução
+### 📥 Pré-requisitos
+- **Java 21**
+- **MongoDB** instalado e rodando localmente
+- **Maven** instalado
+
+### ▶️ Passos para Rodar o Projeto
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/tela-login.git
+   ```
+2. Acesse a pasta do projeto:
+   ```bash
+   cd tela-login
+   ```
+3. Configure o banco de dados MongoDB no arquivo `application.properties`:
+   ```properties
+   spring.data.mongodb.uri=mongodb://localhost:27017/tela_login
+   ```
+4. Compile e execute o projeto:
+   ```bash
+   mvn spring-boot:run
+   ```
+
+---
+
+## 📌 Endpoints da API
+
+### 📌 Jogadores
+- **Cadastrar jogador:** `POST /players`
+- **Buscar jogador por username:** `GET /players/{username}`
+- **Deletar jogador:** `DELETE /players/{id}`
+- **Autenticar jogador:** `POST /players/auth`
+
+### 📌 Seguidores
+- **Seguir um jogador:** `POST /follow/{username}`
+- **Deixar de seguir:** `DELETE /follow/{username}`
+- **Listar seguidores:** `GET /follow/{username}`
+
+### 📌 Jogos
+- **Cadastrar jogo:** `POST /games`
+- **Listar jogos:** `GET /games`
+
+### 📌 Matchmaking
+- **Buscar jogadores por jogo favorito:** `GET /matchmaking/{gameName}`
+
+---
+
+## 📜 Licença
+Este projeto é de código aberto e pode ser modificado conforme necessário.
+
+---
+
+## 👨‍💻 Autor
+**[Seu Nome]** - Desenvolvedor Backend
+
