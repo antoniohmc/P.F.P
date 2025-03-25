@@ -8,14 +8,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
-
+/**
+ * Classe de request para cadastro de jogo.
+ * Contém os dados necessários para cadastrar um jogo, como nome e gêneros.
+ */
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class GameRequest {
 
-    String name;
+    private String name;
 
-    Collection<GendersType> genders;
+    private Collection<GendersType> genders;
 }

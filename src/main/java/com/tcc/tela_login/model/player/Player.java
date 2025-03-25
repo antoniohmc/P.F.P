@@ -10,6 +10,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
 
+/**
+ * Representa a entidade Player, que armazena informações sobre os jogadores.
+ *
+ * Cada jogador possui um nome de usuário, e-mail, senha, país, tipo de plataforma,
+ * e uma coleção de jogos favoritos.
+ * A coleção é armazenada como "player".
+ */
 @Document(collection = "player")
 @Data
 @Builder
@@ -31,5 +38,4 @@ public class Player {
     private String plataformType;
 
     private Collection<Game> favoriteGames;
-
 }

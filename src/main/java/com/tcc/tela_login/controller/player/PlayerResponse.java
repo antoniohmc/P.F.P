@@ -1,30 +1,31 @@
 package com.tcc.tela_login.controller.player;
 
 import com.tcc.tela_login.model.game.Game;
-
 import java.util.Collection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * Classe de resposta para os dados de um jogador.
+ * Contém as informações exibidas ao retornar os dados de um jogador.
+ */
 @Builder
 @Data
 @AllArgsConstructor
 public class PlayerResponse {
 
-    String id;
+    private String id;
 
-    String username;
+    private String username;
 
-    String email;
+    private String email;
 
-    String password;
+    private String password;
 
-    String country;
+    private String country;
 
-    String plataformType;
+    private String plataformType;
 
-    Collection<Game> favoriteGames;
-
-
+    private Collection<Game> favoriteGames;
 }

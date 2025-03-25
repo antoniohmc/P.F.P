@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
+/**
+ * Resposta que contém informações sobre o perfil de um jogador, incluindo seus jogos favoritos.
+ */
 @Data
 @Builder
 @AllArgsConstructor
@@ -21,5 +24,4 @@ public class FollowersResponse {
     private String plataformType;
 
     private Collection<Game> favoriteGames;
-
 }

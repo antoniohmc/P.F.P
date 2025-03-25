@@ -13,6 +13,12 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+/**
+ * Serviço responsável pelas operações de seguimento entre jogadores.
+ *
+ * Esta classe permite que um jogador siga ou pare de seguir outro jogador,
+ * além de obter a lista de jogadores que um jogador está seguindo.
+ */
 @Service
 @RequiredArgsConstructor
 public class FollowService {
@@ -20,6 +26,15 @@ public class FollowService {
     private final PlayerRepository playerRepository;
     private final FollowRepository followRepository;
 
+    /**
+     * Permite que um jogador siga outro jogador.
+     *
+     * @param followerUsername O nome de usuário do jogador seguidor.
+     * @param playerToFollowUsername O nome de usuário do jogador a ser seguido.
+     * @throws NotFoundPlayer Se algum dos jogadores não for encontrado.
+     * @throws ExistingPlayer Se o jogador já está seguindo o outro.
+     * @throws FollowYourself Se o jogador tentar seguir a si mesmo.
+     */
     public void follow(String followerUsername, String playerToFollowUsername) throws NotFoundPlayer, ExistingPlayer, FollowYourself {
         var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerToFollowUsername);
@@ -31,6 +46,13 @@ public class FollowService {
         followRepository.save(follow);
     }
 
+    /**
+     * Permite que um jogador pare de seguir outro jogador.
+     *
+     * @param followerUsername O nome de usuário do jogador seguidor.
+     * @param playerFollowingUsername O nome de usuário do jogador seguido.
+     * @throws NotFoundPlayer Se algum dos jogadores não for encontrado.
+     */
     public void unfollow(String followerUsername, String playerFollowingUsername) throws NotFoundPlayer {
         var follower = findPlayerByUsername(followerUsername);
         var player = findPlayerByUsername(playerFollowingUsername);
@@ -38,6 +60,12 @@ public class FollowService {
         followRepository.findByFollowerIdAndFollowingId(follower.getId(), player.getId()).ifPresent(followRepository::delete);
     }
 
+    /**
+     * Obtém os nomes de usuário dos jogadores que um jogador está seguindo.
+     *
+     * @param playerId O ID do jogador.
+     * @return Uma coleção de nomes de usuário dos jogadores seguidos.
+     */
     public Collection<String> getFollowingUsernames(String playerId) {
         Collection<Follow> follows = followRepository.findByFollowerId(playerId);
 

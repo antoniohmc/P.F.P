@@ -7,14 +7,18 @@ import lombok.Data;
 
 import java.util.Collection;
 
+/**
+ * Classe de resposta para exibição dos dados de um jogo.
+ * Contém o id, nome e gêneros do jogo.
+ */
 @Builder
 @Data
 @AllArgsConstructor
 public class GameResponse {
 
-     String id;
+     private String id;
 
-     String name;
+     private String name;
 
-     Collection<GendersType> gender;
+     private Collection<GendersType> gender;
 }

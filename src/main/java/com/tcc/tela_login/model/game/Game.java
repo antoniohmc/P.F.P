@@ -9,7 +9,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-
+/**
+ * Representa a entidade Game, que armazena informações sobre os jogos.
+ *
+ * Um jogo é armazenado com seu nome e os tipos de gênero associados a ele.
+ * A coleção é armazenada como "game".
+ */
 @Document(collection = "game")
 @Data
 @Builder
@@ -23,5 +28,4 @@ public class Game {
     private String name;
 
     private List<GendersType> genders;
-
 }

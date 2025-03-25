@@ -8,21 +8,25 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
+/**
+ * Classe de solicitação de cadastro de jogador.
+ * Contém os dados necessários para cadastrar um novo jogador.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class PlayerRequest {
 
-    String username;
+    private String username;
 
-    String email;
+    private String email;
 
-    String password;
+    private String password;
 
-    String country;
+    private String country;
 
-    String plataformType;
+    private String plataformType;
 
-    Collection<GameRequest> favoriteGames;
+    private Collection<GameRequest> favoriteGames;
 }
