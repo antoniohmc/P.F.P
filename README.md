@@ -5,6 +5,8 @@ Este projeto é uma API desenvolvida em **Java Spring Boot** com **MongoDB** par
 
 ---
 
+# OBS: ACESSE A BREACH MASTER PARA ACESSAR O CODIGO
+
 ## 🚀 Funcionalidades
 
 ### 🎮 Gerenciamento de Jogadores
